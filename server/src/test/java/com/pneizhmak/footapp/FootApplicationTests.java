@@ -1,4 +1,4 @@
-package com.example;
+package com.pneizhmak.footapp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class FootApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
-
+    @Test
+    public void contextLoads() {
+    }
 }
