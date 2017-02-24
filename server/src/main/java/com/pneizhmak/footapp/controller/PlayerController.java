@@ -25,10 +25,10 @@ public class PlayerController {
     public Collection<Map<String, String>> goodBeers() {
 
         return repository.findAll().stream()
-                .map(b -> {
+                .map(playerMapFunction -> {
                     Map<String, String> m = new HashMap<>();
-                    m.put("id", b.getId().toString());
-                    m.put("name", b.getName());
+                    m.put("id", playerMapFunction.getId().toString());
+                    m.put("name", playerMapFunction.getName());
                     return m;
                 }).collect(Collectors.toList());
     }
