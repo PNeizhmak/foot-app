@@ -1,35 +1,54 @@
 package com.pneizhmak.footapp.controller;
 
-import com.pneizhmak.footapp.repository.PlayerRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.pneizhmak.footapp.db.model.Player;
+import com.pneizhmak.footapp.service.PlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Pavel Neizhmak
  */
-@RestController
+@Controller
+@RequestMapping("/players")
 public class PlayerController {
 
-    private PlayerRepository repository;
+    private final PlayerService playerService;
 
-    public PlayerController(PlayerRepository repository) {
-        this.repository = repository;
+    @Autowired
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
     }
 
-    @GetMapping("/players")
-    public Collection<Map<String, String>> goodBeers() {
+    @ResponseBody
+    @RequestMapping(value = "/save")
+    public String savePlayer(@RequestParam String name) {
 
-        return repository.findAll().stream()
-                .map(playerMapFunction -> {
-                    Map<String, String> m = new HashMap<>();
-                    m.put("id", playerMapFunction.getId().toString());
-                    m.put("name", playerMapFunction.getName());
-                    return m;
-                }).collect(Collectors.toList());
+        Player player = new Player(name);
+        playerService.savePlayer(player);
+
+        return "User successfully saved!";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/all")
+    public String getAll() {
+        return playerService.findAll().toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete")
+    public String deletePlayer(@RequestParam int id) {
+        playerService.deletePlayer(id);
+        return "User successfully deleted!";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/get-by-name")
+    public String getByName(@RequestParam String name) {
+        Player player = playerService.findPlayerByName(name);
+        return "Requested player is : " + player.getId() + "-" + player.getName();
     }
 }
