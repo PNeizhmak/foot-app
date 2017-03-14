@@ -27,6 +27,7 @@ public class Player extends AbstractEntity {
     @CollectionTable(name = "players_position",
             joinColumns = @JoinColumn(name = "player_id"))
     @Column(name = "position_id")
+    @Convert(converter = PlayerPositionConverter.class)
     private Set<PlayerPosition> positions;
 
     @Override
