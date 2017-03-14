@@ -1,5 +1,6 @@
 package com.pneizhmak.footapp.configuration;
 
+import org.hibernate.jpa.HibernateEntityManager;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -57,6 +58,7 @@ public class AppConfiguration {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        entityManagerFactoryBean.setEntityManagerInterface(HibernateEntityManager.class);
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(pckgToScan);
 
