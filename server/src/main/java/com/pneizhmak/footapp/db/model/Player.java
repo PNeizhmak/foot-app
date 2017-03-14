@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Pavel Neizhmak
@@ -20,16 +21,25 @@ public class Player extends AbstractEntity {
     @Setter
     private String name;
 
+    @Getter
+    @Setter
+    @ElementCollection(targetClass = PlayerPosition.class)
+    @CollectionTable(name = "players_position",
+            joinColumns = @JoinColumn(name = "player_id"))
+    @Column(name = "position_id")
+    private Set<PlayerPosition> positions;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return Objects.equals(name, player.name);
+        return Objects.equals(name, player.name) &&
+                Objects.equals(positions, player.positions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, positions);
     }
 }

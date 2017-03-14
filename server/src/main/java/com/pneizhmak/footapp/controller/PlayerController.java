@@ -1,12 +1,15 @@
 package com.pneizhmak.footapp.controller;
 
 import com.pneizhmak.footapp.db.model.Player;
+import com.pneizhmak.footapp.db.model.PlayerPosition;
 import com.pneizhmak.footapp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashSet;
 
 /**
  * @author Pavel Neizhmak
@@ -26,7 +29,9 @@ public class PlayerController {
     @RequestMapping(value = "/save")
     public String savePlayer(@RequestParam String name) {
 
-        Player player = new Player(name);
+        Player player = new Player(name, new HashSet<PlayerPosition>() {{
+            add(PlayerPosition.UNIVERSAL);
+        }});
         playerService.savePlayer(player);
 
         return "User successfully saved!";
