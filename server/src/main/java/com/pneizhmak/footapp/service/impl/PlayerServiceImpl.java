@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Pavel Neizhmak
@@ -21,8 +20,8 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerRepository playerRepository;
 
     @Override
-    public List<Player> findAll() {
-        return playerRepository.findAll();
+    public Object[] findAll() {
+        return playerRepository.streamAllPlayers().toArray();
     }
 
     @Override
