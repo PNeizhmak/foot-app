@@ -1,10 +1,8 @@
 angular.module('starter.services', [])
 
-.factory('Players', function() {
-  // Might use a resource here that returns a JSON array
+.factory('Players', function($http) {
 
-  // Some fake testing data
-  var chats = [{
+  var players = [{
     id: 0,
     name: 'Pavel Neizhmal',
     lastText: 'You on your way?',
@@ -16,17 +14,19 @@ angular.module('starter.services', [])
     face: 'img/max.png'
   }];
 
+  var dataSource = 'http://localhost:8080/players/all';
+
   return {
     all: function() {
-      return chats;
+      return $http.get(dataSource);
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(player) {
+      players.splice(players.indexOf(player), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(playerId) {
+      for (var i = 0; i < players.length; i++) {
+        if (players[i].id === parseInt(playerId)) {
+          return players[i];
         }
       }
       return null;
