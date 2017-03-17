@@ -15,7 +15,6 @@ angular.module('starter.controllers', [])
     }).catch(function(response){
       //request was not successful
       //handle the error
-      $ionicLoading.hide();
     }).finally(function(){
       $ionicLoading.hide();
     });
@@ -26,8 +25,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, $ionicLoading, Players) {
-  $scope.player = Players.get($stateParams.playerId);
+.controller('PlayerDetailCtrl', function($scope, $stateParams, $ionicLoading, Players) {
+  $scope.$on('$ionicView.enter', function(){
+    $ionicLoading.show();
+    Players.get($stateParams.playerName).then(function (response) {
+      $scope.player = response.data;
+    }).catch(function (response) {
+      //request was not successful
+      //handle the error
+    }).finally(function () {
+      $ionicLoading.hide();
+    });
+  });
 })
 
 .controller('AccountCtrl', function($scope) {
