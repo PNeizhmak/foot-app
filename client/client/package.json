@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "Foota-pp",
   "version": "1.1.1",
-  "description": "client: An Ionic project",
+  "description": "Football application. Helps to shuffle teams and provide additional info.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

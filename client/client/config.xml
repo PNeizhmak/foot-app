@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.client590081" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>client</name>
-  <description>&#xD;
-        An Ionic Framework and Cordova project.&#xD;
-    </description>
-  <author email="you@example.com" href="http://example.com/">&#xD;
-      Your Name Here&#xD;
-    </author>
+  <name>Foot-app</name>
+  <description>
+        Football application. Helps to shuffle teams and provide additional info.
+  </description>
+  <author email="maxeg@playtika.com" href="http://example.com/">
+      Maxim Egoshin
+  </author>
+  <author email="pneizhmak@playtika.com" href="http://example.com/">
+    Pavel Neizhmak
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
