@@ -52,9 +52,15 @@ public class PlayerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/get-by-name")
+    @RequestMapping(value = "/get-by-name", produces = "application/json;charset=UTF-8")
     public String getByName(@RequestParam String name) {
         Player player = playerService.findPlayerByName(name);
         return "Requested player is : " + player.getId() + "-" + player.getName();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/get-by-id", produces = "application/json;charset=UTF-8")
+    public Player getById(@RequestParam int id) {
+        return playerService.getOne(id);
     }
 }

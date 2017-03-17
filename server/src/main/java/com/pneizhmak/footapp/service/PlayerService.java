@@ -16,4 +16,6 @@ public interface PlayerService {
     Player findPlayerByName(String name);
 
     Player editPlayer(Player player);
+
+    Player getOne(Integer id);
 }
