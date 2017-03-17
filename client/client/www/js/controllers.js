@@ -8,11 +8,10 @@ angular.module('starter.controllers', [])
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
-  var _this = this;
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
     Players.all().then(function(response){
-      _this.players = response.data;
+      $scope.players = response.data;
     }).catch(function(response){
       //request was not successful
       //handle the error
