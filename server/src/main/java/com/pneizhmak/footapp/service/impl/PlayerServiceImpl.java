@@ -20,6 +20,7 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerRepository playerRepository;
 
     @Override
+    @Cacheable("players")
     public Object[] findAll() {
         return playerRepository.streamAllPlayers().toArray();
     }
@@ -44,8 +45,8 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.saveAndFlush(player);
     }
 
-    @Cacheable("players")
-    public Player findOne(Integer id) {
+    @Override
+    public Player getOne(Integer id) {
         return playerRepository.findOne(id);
     }
 }
