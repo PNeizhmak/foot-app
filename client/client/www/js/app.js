@@ -60,7 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('tab.player-detail', {
-      url: '/players/:playerName',
+      url: '/players/:playerId',
       views: {
         'tab-players': {
           templateUrl: 'templates/player-detail.html',

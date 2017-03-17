@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
 .controller('PlayerDetailCtrl', function($scope, $stateParams, $ionicLoading, Players) {
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
-    Players.get($stateParams.playerName).then(function (response) {
+    Players.get($stateParams.playerId).then(function (response) {
       $scope.player = response.data;
     }).catch(function (response) {
       //request was not successful
