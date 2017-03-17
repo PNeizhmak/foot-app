@@ -40,9 +40,9 @@ public class PlayerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/all")
-    public String getAll() {
-        return Arrays.toString(playerService.findAll());
+    @RequestMapping(value = "/all", produces = "application/json;charset=UTF-8")
+    public Object[] getAll() {
+        return playerService.findAll();
     }
 
     @ResponseBody
