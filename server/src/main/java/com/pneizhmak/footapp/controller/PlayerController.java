@@ -1,15 +1,12 @@
 package com.pneizhmak.footapp.controller;
 
 import com.pneizhmak.footapp.db.model.Player;
-import com.pneizhmak.footapp.db.model.PlayerPosition;
 import com.pneizhmak.footapp.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.HashSet;
 
 /**
  * @author Pavel Neizhmak
@@ -29,12 +26,22 @@ public class PlayerController {
     @RequestMapping(value = "/save")
     public String savePlayer(@RequestParam String name) {
 
-        Player player = new Player(name, new HashSet<PlayerPosition>() {{
-            add(PlayerPosition.UNIVERSAL);
-        }});
+        Player player = new Player(name);
         playerService.savePlayer(player);
 
-        return "User successfully saved!";
+        return "Player successfully saved!";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/edit")
+    public String editPlayer(@RequestParam Integer id,@RequestParam String nameToSet) {
+
+        Player player = playerService.getOne(id);
+        player.setName(nameToSet);
+
+        playerService.editPlayer(player);
+
+        return "Player successfully edited!";
     }
 
     @ResponseBody
@@ -47,7 +54,7 @@ public class PlayerController {
     @RequestMapping(value = "/delete")
     public String deletePlayer(@RequestParam int id) {
         playerService.deletePlayer(id);
-        return "User successfully deleted!";
+        return "Player successfully deleted!";
     }
 
     @ResponseBody
