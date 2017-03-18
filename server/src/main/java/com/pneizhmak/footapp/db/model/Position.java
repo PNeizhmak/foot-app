@@ -14,12 +14,12 @@ import java.util.Set;
 @ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Table(name = "players")
-@TableGenerator(name="players_table", allocationSize=100)
-public class Player {
+@Table(name = "position")
+@TableGenerator(name="position_table", allocationSize=100)
+public class Position {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "players_table")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "position_table")
     @Getter
     Integer id;
 
@@ -32,9 +32,9 @@ public class Player {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return Objects.equals(id, player.id) &&
-                Objects.equals(name, player.name);
+        Position position = (Position) o;
+        return Objects.equals(id, position.id) &&
+                Objects.equals(name, position.name);
     }
 
     @Override
