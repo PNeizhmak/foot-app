@@ -2,17 +2,23 @@ angular.module('starter.services', [])
 
 .factory('Players', function($http) {
 
-  var dataSource = 'http://localhost:8080/players';
+  var dataSource = 'http://localhost:8080/';
 
   return {
     all: function() {
-      return $http.get(dataSource + "/all");
+      return $http.get(dataSource + "/players/all");
     },
-    remove: function(player) {
-      players.splice(players.indexOf(player), 1);
+    shuffle: function(players) {
+      var ids = players.filter(function (p) {
+        return p.checked;
+      }).map(function (p) {
+        return p.id;
+      }).join(',');
+      var teamsCount = 2;
+      return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount}});
     },
     get: function(playerId) {
-      return $http.get(dataSource + "/get-by-id", {params: {id: playerId}});
+      return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
     }
   };
 });
