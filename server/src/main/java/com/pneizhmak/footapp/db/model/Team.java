@@ -13,7 +13,11 @@ public class Team {
 
     @Getter
     @Setter
-    Collection<Player> players;
+    Collection<PlayerProfile> players;
+
+    @Getter
+    @Setter
+    Integer teamWeight;
 
     /**
      * BI part
