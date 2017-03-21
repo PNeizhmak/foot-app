@@ -25,7 +25,7 @@ public class PlayerProfileImpl implements PlayerProfileService {
 
     @Override
     public Object[] findAll() {
-        return playerProfileRepository.streamAllPositions().toArray();
+        return playerProfileRepository.streamAllProfiles().toArray();
     }
 
     @Override

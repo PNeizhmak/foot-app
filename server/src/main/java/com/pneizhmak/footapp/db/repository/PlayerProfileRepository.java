@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -15,5 +16,8 @@ public interface PlayerProfileRepository extends JpaRepository<PlayerProfile, In
 //    todo: find by weight
 
     @Query("select pp from PlayerProfile pp")
-    Stream<PlayerProfile> streamAllPositions();
+    Stream<PlayerProfile> streamAllProfiles();
+
+    @Query("select pp from PlayerProfile pp where pp.player.id in :playerIds")
+    List<PlayerProfile> findProfilesByPlayerId(@Param("playerIds") List<Integer> playerIds);
 }
