@@ -2,7 +2,7 @@ angular.module('starter.services', [])
 
 .factory('Players', function($http) {
 
-  var dataSource = 'http://localhost:8080/';
+  var dataSource = '10.61.20.95:8080';
 
   return {
     all: function() {
