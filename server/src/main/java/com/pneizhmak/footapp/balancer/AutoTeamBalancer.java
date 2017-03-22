@@ -17,22 +17,28 @@ public class AutoTeamBalancer implements TeamMaker {
 
         Collection<Team> result = new ArrayList<>();
 
-        Team team1 = new Team();
-        Team team2 = new Team();
+        List<Team> teams = new ArrayList<>();
 
-        List<PlayerProfile> playersTeam1 = new ArrayList<>();
-        List<PlayerProfile> playersTeam2 = new ArrayList<>();
+        @SuppressWarnings("unchecked")
+        List<PlayerProfile>[] teamList = (List<PlayerProfile>[]) new ArrayList[teamsCount];
+
+        for (int i = 0; i < teamsCount; i++) {
+            teamList[i] = new ArrayList<>();
+            teams.add(new Team());
+        }
 
         Map<String, Set<PlayerProfile>> positionToProfile = playerProfiles.stream().collect(Collectors.groupingBy(
                 (profile) -> profile.getPosition().getName(), Collectors.mapping((profile) -> profile, Collectors.toSet())));
 
         final int playersInTeam = playersCount / teamsCount;
-        final int[] i = {0};
         final Player[] player = new Player[1];
         List<Player> playersToDelete = new ArrayList<>();
         List<PlayerProfile> profilesToDelete = new ArrayList<>();
 
-        while (playersTeam1.size() != playersInTeam) {
+        final int[] seed2 = {0};
+        final int[] seed3 = {0};
+
+        while (teamList[teamsCount - 1].size() != playersInTeam) {
             positionToProfile.forEach((position, profiles) -> {
                 if (!playersToDelete.isEmpty()) {
                     profiles.forEach((profile) -> playersToDelete.forEach((playerToDelete) -> {
@@ -48,28 +54,45 @@ public class AutoTeamBalancer implements TeamMaker {
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-                    ++i[0];
-                    if (i[0] % 2 == 0) {
-                        playersTeam1.add(playerProfile);
-                    } else {
-                        playersTeam2.add(playerProfile);
+
+                    if (teamList.length == 2) {
+                        makeTwoTeams(teamList, seed2, playerProfile);
+                    } else if (teamList.length == 3) {
+                        makeThreeTeams(teamList, seed3, playerProfile);
                     }
                 }
             });
         }
 
-        int weightTeam1 = playersTeam1.stream().mapToInt(PlayerProfile::getWeight).sum();
-        int weightTeam2 = playersTeam2.stream().mapToInt(PlayerProfile::getWeight).sum();
+        for (int index = 0; index < teams.size(); index++) {
 
-        team1.setPlayers(playersTeam1);
-        team2.setPlayers(playersTeam2);
+            int teamWeight = teamList[index].stream().mapToInt(PlayerProfile::getWeight).sum();
 
-        team1.setTeamWeight(weightTeam1);
-        team2.setTeamWeight(weightTeam2);
+            teams.get(index).setPlayers(teamList[index]);
+            teams.get(index).setTeamWeight(teamWeight);
 
-        result.add(team1);
-        result.add(team2);
+            result.add(teams.get(index));
+        }
 
         return result;
+    }
+
+    private void makeThreeTeams(List<PlayerProfile>[] teamList, int[] seed3, PlayerProfile playerProfile) {
+        ++seed3[0];
+        if (seed3[0] > 3) {
+            seed3[0] = 1;
+        }
+        if (seed3[0] == 1) teamList[0].add(playerProfile);
+        else if (seed3[0] == 2) teamList[1].add(playerProfile);
+        else if (seed3[0] == 3) teamList[2].add(playerProfile);
+    }
+
+    private void makeTwoTeams(List<PlayerProfile>[] teamList, int[] seed2, PlayerProfile playerProfile) {
+        ++seed2[0];
+        if (seed2[0] > 2) {
+            seed2[0] = 1;
+        }
+        if (seed2[0] == 1) teamList[0].add(playerProfile);
+        else if (seed2[0] == 2) teamList[1].add(playerProfile);
     }
 }
