@@ -1,6 +1,14 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Football app</h2>
-    <p>This is start screen</p>
+<ion-view view-title="Home">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding" class="has-header">
+    <h2>Settings</h2>
+    <p>Number of teams (<b>{{teams}}</b>):</p>
+    <div class="item range">
+      <!--<i class="icon ion-minus"></i>-->
+      <input type="range" name="teams" min="2" max="4" ng-model="teams" ng-change="saveTeamsCount()">
+      <!--<i class="icon ion-plus"></i>-->
+    </div>
   </ion-content>
 </ion-view>

@@ -1,6 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, Players) {
+  $scope.teams = Players.getTeamsCount();
+  $scope.saveTeamsCount = function() {
+    Players.setTeamsCount($scope.teams);
+  };
+})
 
 .controller('PlayersCtrl', function($scope, $ionicLoading, $state, Players) {
   // With the new view caching in Ionic, Controllers are only called
@@ -21,7 +26,7 @@ angular.module('starter.controllers', [])
   });
   $scope.makeTeams = function () {
     Players.setSelectedPlayers($scope.players);
-    $state.go('tab.teams');
+    $state.go('app.teams');
   };
 })
 
@@ -51,10 +56,4 @@ angular.module('starter.controllers', [])
       $ionicLoading.hide();
     });
   });
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
 });

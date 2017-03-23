@@ -32,37 +32,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
+    .state('app', {
+    url: '/app',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/menu.html'
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('app.dash', {
     url: '/dash',
     views: {
-      'tab-dash': {
+      'menuContent': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
       }
     }
   })
 
-  .state('tab.players', {
+  .state('app.players', {
       url: '/players',
       views: {
-        'tab-players': {
+        'menuContent': {
           templateUrl: 'templates/tab-players.html',
           controller: 'PlayersCtrl'
         }
       }
     })
-    .state('tab.teams', {
+    .state('app.teams', {
       url: '/teams',
       views: {
-        'tab-teams': {
+        'menuContent': {
           templateUrl: 'templates/tab-teams.html',
           controller: 'TeamsCtrl'
         }
@@ -76,19 +76,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'PlayerDetailCtrl'
         }
       }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/app/dash');
 
 });

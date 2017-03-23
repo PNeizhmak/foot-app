@@ -3,7 +3,8 @@ angular.module('starter.services', [])
 .factory('Players', function($http) {
 
   var dataSource = 'http://localhost:8080';
-  var selectedPlayers = null;
+  var selectedPlayers = [];
+  var teamsCount = 2;
 
   return {
     all: function() {
@@ -26,6 +27,12 @@ angular.module('starter.services', [])
     },
     getSelectedPlayers: function() {
       return selectedPlayers;
-    }
+    },
+    setTeamsCount: function(count) {
+      teamsCount = count;
+    },
+    getTeamsCount: function() {
+      return teamsCount;
+    },
   };
 });
