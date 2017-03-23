@@ -35,8 +35,7 @@ public class AutoTeamBalancer implements TeamMaker {
         List<Player> playersToDelete = new ArrayList<>();
         List<PlayerProfile> profilesToDelete = new ArrayList<>();
 
-        final int[] seed2 = {0};
-        final int[] seed3 = {0};
+        final int[] seed = {0};
 
         while (teamList[teamsCount - 1].size() != playersInTeam) {
             positionToProfile.forEach((position, profiles) -> {
@@ -54,12 +53,7 @@ public class AutoTeamBalancer implements TeamMaker {
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-
-                    if (teamList.length == 2) {
-                        makeTwoTeams(teamList, seed2, playerProfile);
-                    } else if (teamList.length == 3) {
-                        makeThreeTeams(teamList, seed3, playerProfile);
-                    }
+                    proceedMakeTeam(teamList, seed, playerProfile, teamsCount);
                 }
             });
         }
@@ -77,22 +71,16 @@ public class AutoTeamBalancer implements TeamMaker {
         return result;
     }
 
-    private void makeThreeTeams(List<PlayerProfile>[] teamList, int[] seed3, PlayerProfile playerProfile) {
-        ++seed3[0];
-        if (seed3[0] > 3) {
-            seed3[0] = 1;
+    private void proceedMakeTeam(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
+        ++seed[0];
+        if (seed[0] > teamsCount) {
+            seed[0] = 1;
         }
-        if (seed3[0] == 1) teamList[0].add(playerProfile);
-        else if (seed3[0] == 2) teamList[1].add(playerProfile);
-        else if (seed3[0] == 3) teamList[2].add(playerProfile);
-    }
-
-    private void makeTwoTeams(List<PlayerProfile>[] teamList, int[] seed2, PlayerProfile playerProfile) {
-        ++seed2[0];
-        if (seed2[0] > 2) {
-            seed2[0] = 1;
+        for (int team = 1; team <= teamsCount; team++) {
+            if (seed[0] == team) {
+                teamList[team - 1].add(playerProfile);
+                break;
+            }
         }
-        if (seed2[0] == 1) teamList[0].add(playerProfile);
-        else if (seed2[0] == 2) teamList[1].add(playerProfile);
     }
 }
