@@ -19,15 +19,16 @@ angular.module('starter.controllers', [])
       $ionicLoading.hide();
     });
   });
-  $scope.go = function ( path ) {
-    $state.go( path );
+  $scope.makeTeams = function () {
+    Players.setSelectedPlayers($scope.players);
+    $state.go('tab.teams');
   };
 })
 
 .controller('TeamsCtrl', function($scope, $stateParams, $ionicLoading, Players) {
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
-    Players.shuffle($scope.players).then(function(response){
+    Players.shuffle(Players.getSelectedPlayers()).then(function(response){
       $scope.teams =  response.data;
     }).catch(function(response){
       //request was not successful

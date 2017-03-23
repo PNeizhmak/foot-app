@@ -3,6 +3,7 @@ angular.module('starter.services', [])
 .factory('Players', function($http) {
 
   var dataSource = 'http://localhost:8080';
+  var selectedPlayers = null;
 
   return {
     all: function() {
@@ -19,6 +20,12 @@ angular.module('starter.services', [])
     },
     get: function(playerId) {
       return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
+    },
+    setSelectedPlayers: function(players) {
+      selectedPlayers = players;
+    },
+    getSelectedPlayers: function() {
+      return selectedPlayers;
     }
   };
 });
