@@ -1,26 +1,33 @@
 <ion-side-menus>
 
   <ion-pane ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button class="button-icon ion-arrow-left-c"><i class="icon ion-chevron-left"></i> Back
+      </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
   <ion-side-menu side="left" width="120">
-    <header class="bar bar-header bar-stable">
+    <ion-header-bar class="bar bar-dark">
       <h1 class="title">Menu</h1>
-    </header>
+    </ion-header-bar>
     <ion-content class="has-header">
       <ion-list>
         <ion-item nav-clear menu-close href="#/app/dash">
-          Home
+          <button class="button icon icon-left ion-ios-football">
+            Home
+          </button>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/players">
-          Players
+          <button class="button icon icon-left ion-person-add">
+            Players
+          </button>
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/teams">
-          Teams
+          <button class="button icon icon-left ion-person-stalker">
+            Teams
+          </button>
         </ion-item>
       </ion-list>
     </ion-content>
