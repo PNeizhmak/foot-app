@@ -6,12 +6,12 @@
     <ion-list>
       <ion-item class="item" ng-repeat="team in teams" type="item-text-wrap">
         <h2>Team</h2>
-        <p>Weigh = {{team.teamWeight}}</p>
+        <p>Weight = {{team.teamWeight}}</p>
         <ion-list>
           <ion-item class="item" ng-repeat="player in team.players" type="item-text-wrap">
             <h4>{{player.player.name}}</h4>
             <p>{{player.position.name}}</p>
-            <p>His weigh is {{player.weight}}</p>
+            <p>His weight is {{player.weight}}</p>
           </ion-item>
         </ion-list>
       </ion-item>
