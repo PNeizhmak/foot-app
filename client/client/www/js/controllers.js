@@ -13,6 +13,7 @@ angular.module('starter.controllers', [])
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
+  $scope.selectedPlayers = 0;
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
     Players.all().then(function(response){
@@ -27,6 +28,11 @@ angular.module('starter.controllers', [])
   $scope.makeTeams = function () {
     Players.setSelectedPlayers($scope.players);
     $state.go('app.teams');
+  };
+  $scope.updatePlayersCount = function () {
+    $scope.selectedPlayers = $scope.players.filter(function (p) {
+      return p.checked;
+    }).length;
   };
 })
 

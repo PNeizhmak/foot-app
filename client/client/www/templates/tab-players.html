@@ -3,6 +3,9 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
+    <div style="margin: 5px; font-size: 12pt;" ng-show="selectedPlayers > 0">
+      Selected <b>{{selectedPlayers}}</b>
+    </div>
     <button class="button button-positive" ng-click="makeTeams()">
       <i class="icon ion-ios-play"></i>
     </button>
@@ -12,7 +15,7 @@
       <ion-item class="item item-toggle" ng-repeat="player in players" type="item-text-wrap">
         <h2>{{player.name}}</h2>
         <label class="toggle toggle-balanced">
-          <input type="checkbox" ng-model="player.checked">
+          <input type="checkbox" ng-model="player.checked" ng-change="updatePlayersCount()">
           <div class="track">
             <div class="handle"></div>
           </div>
