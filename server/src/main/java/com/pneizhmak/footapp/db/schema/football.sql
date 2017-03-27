@@ -32,7 +32,7 @@ CREATE TABLE `player_profile` (
   CONSTRAINT `FKehou6s89rv2k40apw44h5onnw` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
   CONSTRAINT `FKnbg9ajtc7cf7odugkpl9op9wv` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
   CONSTRAINT `FKobffu1jp354v25sul0btcqcpy` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 /*Data for the table `player_profile` */
 
@@ -134,6 +134,22 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (48,36,2,8);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (49,37,4,7);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(50,7,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(51,8,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(52,19,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(53,21,2,6);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(54,22,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(55,25,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(56,27,2,5);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(57,29,2,4);
 
 /*Table structure for table `players` */
 
@@ -230,7 +246,7 @@ CREATE TABLE `position` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `position` */
 
