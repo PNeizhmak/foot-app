@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * @author Pavel Neizhmak
  */
-public class TeamToImageConverter {
+public class TeamToPngConverter {
 
     public static BufferedImage createImage(Collection<Team> result) {
 
@@ -17,10 +17,10 @@ public class TeamToImageConverter {
         Graphics g = bufferedImage.getGraphics();
 
         for (int index = 0; index < result.size(); index++) {
-            Team team = new ArrayList<>(result).get(0);
+            Team team = new ArrayList<>(result).get(index);
             if (index == 0) {
-                g.drawString("Team", 20, 20);
-                g.drawLine(20, 20, 50, 20);
+                g.drawString("Team " + String.valueOf(index + 1), 20, 20);
+                g.drawLine(20, 20, 60, 20);
                 final int[] nameY = {40};
                 team.getPlayers().forEach(playerProfile -> {
                     g.drawString(playerProfile.getPlayer().getName(), 20, nameY[0]);
@@ -28,12 +28,12 @@ public class TeamToImageConverter {
                     nameY[0] += 20;
                 });
             } else if (index == 1) {
-                g.drawString("Team", 170, 20);
-                g.drawLine(170, 20, 200, 20);
+                g.drawString("Team " + String.valueOf(index + 1), 180, 20);
+                g.drawLine(180, 20, 220, 20);
                 final int[] nameY = {40};
                 team.getPlayers().forEach(playerProfile -> {
-                    g.drawString(playerProfile.getPlayer().getName(), 170, nameY[0]);
-                    g.drawString(playerProfile.getPosition().getName(), 250, nameY[0]);
+                    g.drawString(playerProfile.getPlayer().getName(), 180, nameY[0]);
+                    g.drawString(playerProfile.getPosition().getName(), 260, nameY[0]);
                     nameY[0] += 20;
                 });
             }

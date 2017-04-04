@@ -1,6 +1,6 @@
 package com.pneizhmak.footapp.balancer;
 
-import com.pneizhmak.footapp.balancer.converter.TeamToImageConverter;
+import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
 import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
@@ -74,7 +74,7 @@ public class AutoTeamBalancer implements TeamMaker {
             result.add(teams.get(index));
         }
 
-        BufferedImage image = TeamToImageConverter.createImage(result);
+        BufferedImage image = TeamToPngConverter.createImage(result);
         try {
             ImageIO.write(image, "png", new File("teams.png"));
         } catch (IOException e) {
