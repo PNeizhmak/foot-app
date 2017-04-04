@@ -1,11 +1,11 @@
 package com.pneizhmak.footapp.balancer;
 
+import com.pneizhmak.footapp.balancer.converter.TeamToImageConverter;
 import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class AutoTeamBalancer implements TeamMaker {
             result.add(teams.get(index));
         }
 
-        BufferedImage image = createImage();
+        BufferedImage image = TeamToImageConverter.createImage(result);
         try {
             ImageIO.write(image, "png", new File("teams.png"));
         } catch (IOException e) {
@@ -96,34 +96,5 @@ public class AutoTeamBalancer implements TeamMaker {
                 break;
             }
         }
-    }
-
-    private BufferedImage createImage() {
-
-        BufferedImage bufferedImage = new BufferedImage(200, 200, BufferedImage.TYPE_INT_RGB);
-        Graphics g = bufferedImage.getGraphics();
-
-        g.drawString("Team 1", 20, 20);
-        g.drawLine(20,20, 60, 20);
-        g.drawString("Player 1", 20, 40);
-        g.drawString("Player 2", 20, 60);
-        g.drawString("Player 3", 20, 80);
-        g.drawString("Player 4", 20, 100);
-        g.drawString("Player 5", 20, 120);
-        g.drawString("Player 6", 20, 140);
-        g.drawString("Player 7", 20, 160);
-
-        g.drawString("Team 2", 100, 20);
-        g.drawLine(100,20, 140, 20);
-        g.drawString("Player 1", 100, 40);
-        g.drawString("Player 2", 100, 60);
-        g.drawString("Player 3", 100, 80);
-        g.drawString("Player 4", 100, 100);
-        g.drawString("Player 5", 100, 120);
-        g.drawString("Player 6", 100, 140);
-        g.drawString("Player 7", 100, 160);
-
-        return bufferedImage;
-
     }
 }
