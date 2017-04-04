@@ -1,10 +1,16 @@
 package com.pneizhmak.footapp.balancer;
 
+import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
 import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -68,8 +74,16 @@ public class AutoTeamBalancer implements TeamMaker {
             result.add(teams.get(index));
         }
 
+        BufferedImage image = TeamToPngConverter.createImage(result);
+        try {
+            ImageIO.write(image, "png", new File("teams.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return result;
     }
+
 
     private void proceedMakeTeam(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
         ++seed[0];
