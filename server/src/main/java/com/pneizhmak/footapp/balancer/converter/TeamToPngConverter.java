@@ -23,21 +23,25 @@ public class TeamToPngConverter {
                 g.drawLine(20, 20, 60, 20);
                 final int[] nameY = {40};
                 team.getPlayers().forEach(playerProfile -> {
-                    g.drawString(playerProfile.getPlayer().getName(), 20, nameY[0]);
-                    g.drawString(playerProfile.getPosition().getName(), 100, nameY[0]);
-                    nameY[0] += 20;
+                    drawItems(g, nameY, playerProfile.getPlayer().getName(), 20, nameY[0],
+                            playerProfile.getPosition().getName(), 100);
                 });
             } else if (index == 1) {
                 g.drawString("Team " + String.valueOf(index + 1), 180, 20);
                 g.drawLine(180, 20, 220, 20);
                 final int[] nameY = {40};
                 team.getPlayers().forEach(playerProfile -> {
-                    g.drawString(playerProfile.getPlayer().getName(), 180, nameY[0]);
-                    g.drawString(playerProfile.getPosition().getName(), 260, nameY[0]);
-                    nameY[0] += 20;
+                    drawItems(g, nameY, playerProfile.getPlayer().getName(), 180, nameY[0],
+                            playerProfile.getPosition().getName(), 260);
                 });
             }
         }
         return bufferedImage;
+    }
+
+    private static void drawItems(Graphics g, int[] nameY, String player, int x, int y, String position, int x2) {
+        g.drawString(player, x, y);
+        g.drawString(position, x2, y);
+        nameY[0] += 20;
     }
 }
