@@ -84,7 +84,6 @@ public class AutoTeamBalancer implements TeamMaker {
         return result;
     }
 
-
     private void proceedMakeTeam(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
         ++seed[0];
         if (seed[0] > teamsCount) {
