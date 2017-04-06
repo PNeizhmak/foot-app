@@ -1,0 +1,7 @@
+---
+
+docker_py_version: 1.6.0
+docker_compose_version: 1.11.2
+
+docker_users:
+  - ubuntu
