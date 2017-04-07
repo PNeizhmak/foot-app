@@ -2,14 +2,14 @@
 
 - name: Build container
   docker_image:
-     path: ./roles/footapp-server/files/
+     path: ./roles/foot-app-server/files/
      dockerfile: Dockerfile
      name: foot-app-server
 
 - name: Container is running
   docker:
-    name=footapp-server
-    image=springcloud/footappserver
+    name=foot-app-server
+    image=foot-app-server
     ports=8080:8080
     restart_policy=unless-stopped
-  tags: [footapp-server]
+  tags: [foot-app-server]
