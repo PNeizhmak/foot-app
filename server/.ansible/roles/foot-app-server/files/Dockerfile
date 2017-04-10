@@ -5,4 +5,6 @@ ENV JAR_STORAGE https://doc-08-0g-docs.googleusercontent.com/docs/securesc/ha0ro
 
 ADD ${JAR_STORAGE} foot-app-server.jar
 
+EXPOSE 8080
+
 CMD java -jar foot-app-server.jar
