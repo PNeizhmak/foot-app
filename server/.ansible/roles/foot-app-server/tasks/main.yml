@@ -1,0 +1,15 @@
+---
+
+- name: Build container
+  docker_image:
+     path: ./roles/foot-app-server/files/
+     dockerfile: Dockerfile
+     name: foot-app-server
+
+- name: Container is running
+  docker:
+    name=foot-app-server
+    image=foot-app-server
+    ports=8080:8080
+    restart_policy=unless-stopped
+  tags: [foot-app-server]

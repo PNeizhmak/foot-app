@@ -1,0 +1,7 @@
+---
+
+- name: Items are present
+  apt:
+    name: "{{ item }}"
+  with_items: "{{ items }}"
+  tags: [common]
