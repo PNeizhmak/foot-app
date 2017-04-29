@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * @author Pavel Neizhmak
@@ -28,17 +27,24 @@ public class Player {
     @NonNull
     private String name;
 
+    @Getter
+    @Setter
+    @NonNull
+    @Column(name = "parent_id")
+    private Integer parentId;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
         return Objects.equals(id, player.id) &&
-                Objects.equals(name, player.name);
+                Objects.equals(name, player.name) &&
+                Objects.equals(parentId, player.parentId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, parentId);
     }
 }

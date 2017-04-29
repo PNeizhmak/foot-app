@@ -5,10 +5,6 @@ import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +15,7 @@ import java.util.stream.Collectors;
 public class AutoTeamBalancer implements TeamMaker {
 
     @Override
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
+    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount, boolean createPng) {
 
         Collection<Team> result = new ArrayList<>();
 
@@ -33,67 +29,38 @@ public class AutoTeamBalancer implements TeamMaker {
             teams.add(new Team());
         }
 
-        Map<String, Set<PlayerProfile>> positionToProfile = playerProfiles.stream().collect(Collectors.groupingBy(
-                (profile) -> profile.getPosition().getName(), Collectors.mapping((profile) -> profile, Collectors.toSet())));
-
         final int playersInTeam = playersCount / teamsCount;
         final Player[] player = new Player[1];
         List<Player> playersToDelete = new ArrayList<>();
         List<PlayerProfile> profilesToDelete = new ArrayList<>();
 
+        Map<String, List<PlayerProfile>> positionToProfile = playerProfiles.stream().collect(Collectors.groupingBy(
+                (profile) -> profile.getPosition().getName(), Collectors.mapping((profile) -> profile, Collectors.toList())));
+
         final int[] seed = {0};
 
         while (teamList[teamsCount - 1].size() != playersInTeam) {
             positionToProfile.forEach((position, profiles) -> {
-                if (!playersToDelete.isEmpty()) {
-                    profiles.forEach((profile) -> playersToDelete.forEach((playerToDelete) -> {
-                        if (profile.getPlayer().getId().equals(playerToDelete.getId())) {
-                            profilesToDelete.add(profile);
-                        }
-                    }));
-                    profiles.removeAll(profilesToDelete);
-                }
+
+                removeSelectedProfiles(playersToDelete, profilesToDelete, profiles);
 
                 if (!profiles.isEmpty()) {
+                    @SuppressWarnings("ConstantConditions")
                     PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-                    proceedMakeTeam(teamList, seed, playerProfile, teamsCount);
+                    proceedMakeTeam1(teamList, seed, playerProfile, teamsCount);
                 }
             });
         }
 
-        for (int index = 0; index < teams.size(); index++) {
+        produceTeams(result, teams, teamList);
 
-            int teamWeight = teamList[index].stream().mapToInt(PlayerProfile::getWeight).sum();
-
-            teams.get(index).setPlayers(teamList[index]);
-            teams.get(index).setTeamWeight(teamWeight);
-
-            result.add(teams.get(index));
-        }
-
-        BufferedImage image = TeamToPngConverter.createImage(result);
-        try {
-            ImageIO.write(image, "png", new File("teams.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (createPng) {
+            TeamToPngConverter.createImage(result);
         }
 
         return result;
-    }
-
-    private void proceedMakeTeam(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
-        ++seed[0];
-        if (seed[0] > teamsCount) {
-            seed[0] = 1;
-        }
-        for (int team = 1; team <= teamsCount; team++) {
-            if (seed[0] == team) {
-                teamList[team - 1].add(playerProfile);
-                break;
-            }
-        }
     }
 }
