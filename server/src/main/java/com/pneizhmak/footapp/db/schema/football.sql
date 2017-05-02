@@ -16,6 +16,18 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`football` /*!40100 DEFAULT CHARACTER SE
 
 USE `football`;
 
+/*Table structure for table `hibernate_sequences` */
+
+DROP TABLE IF EXISTS `hibernate_sequences`;
+
+CREATE TABLE `hibernate_sequences` (
+  `sequence_name` varchar(255) NOT NULL,
+  `next_val` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`sequence_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `hibernate_sequences` */
+
 /*Table structure for table `player_profile` */
 
 DROP TABLE IF EXISTS `player_profile`;
@@ -32,7 +44,7 @@ CREATE TABLE `player_profile` (
   CONSTRAINT `FKehou6s89rv2k40apw44h5onnw` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
   CONSTRAINT `FKnbg9ajtc7cf7odugkpl9op9wv` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
   CONSTRAINT `FKobffu1jp354v25sul0btcqcpy` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 
 /*Data for the table `player_profile` */
 
@@ -150,6 +162,8 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (56,27,2,5);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (57,29,2,4);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(58,38,3,7);
 
 /*Table structure for table `players` */
 
@@ -158,85 +172,88 @@ DROP TABLE IF EXISTS `players`;
 CREATE TABLE `players` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `parent_id` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 /*Data for the table `players` */
 
-insert  into `players`(`id`,`name`) values
-(1,'Педа');
-insert  into `players`(`id`,`name`) values
-(2,'Башлыков');
-insert  into `players`(`id`,`name`) values
-(3,'Колоткин');
-insert  into `players`(`id`,`name`) values
-(4,'Крутиков');
-insert  into `players`(`id`,`name`) values
-(5,'Каморников');
-insert  into `players`(`id`,`name`) values
-(6,'Шейкин');
-insert  into `players`(`id`,`name`) values
-(7,'Шишацкий');
-insert  into `players`(`id`,`name`) values
-(8,'Марзавин');
-insert  into `players`(`id`,`name`) values
-(9,'Скварчевский');
-insert  into `players`(`id`,`name`) values
-(10,'Бирук');
-insert  into `players`(`id`,`name`) values
-(11,'Жидаль');
-insert  into `players`(`id`,`name`) values
-(12,'Лосич');
-insert  into `players`(`id`,`name`) values
-(13,'Бусел');
-insert  into `players`(`id`,`name`) values
-(14,'Егошин');
-insert  into `players`(`id`,`name`) values
-(15,'Нейжмак');
-insert  into `players`(`id`,`name`) values
-(16,'Рыбалко');
-insert  into `players`(`id`,`name`) values
-(17,'Кириленко');
-insert  into `players`(`id`,`name`) values
-(18,'Вырко');
-insert  into `players`(`id`,`name`) values
-(19,'Макеров');
-insert  into `players`(`id`,`name`) values
-(20,'Скребец');
-insert  into `players`(`id`,`name`) values
-(21,'Примачок');
-insert  into `players`(`id`,`name`) values
-(22,'Рощин');
-insert  into `players`(`id`,`name`) values
-(23,'Титов');
-insert  into `players`(`id`,`name`) values
-(24,'Шапоров');
-insert  into `players`(`id`,`name`) values
-(25,'Слиборский Ал');
-insert  into `players`(`id`,`name`) values
-(26,'Сосновский');
-insert  into `players`(`id`,`name`) values
-(27,'Сойко');
-insert  into `players`(`id`,`name`) values
-(28,'Тихонович');
-insert  into `players`(`id`,`name`) values
-(29,'Мисюля');
-insert  into `players`(`id`,`name`) values
-(30,'Зубович');
-insert  into `players`(`id`,`name`) values
-(31,'Чапля');
-insert  into `players`(`id`,`name`) values
-(32,'Гулькович');
-insert  into `players`(`id`,`name`) values
-(33,'Рубельский');
-insert  into `players`(`id`,`name`) values
-(34,'Дима');
-insert  into `players`(`id`,`name`) values
-(35,'Дуб');
-insert  into `players`(`id`,`name`) values
-(36,'Дракон');
-insert  into `players`(`id`,`name`) values
-(37,'Лысый');
+insert  into `players`(`id`,`name`,`parent_id`) values
+(1,'Педа',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(2,'Башлыков',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(3,'Колоткин',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(4,'Крутиков',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(5,'Каморников',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(6,'Шейкин',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(7,'Шишацкий',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(8,'Марзавин',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(9,'Скварчевский',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(10,'Бирук',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(11,'Жидаль',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(12,'Лосич',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(13,'Бусел',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(14,'Егошин',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(15,'Нейжмак',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(16,'Рыбалко',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(17,'Кириленко',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(18,'Вырко',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(19,'Макеров',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(20,'Скребец',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(21,'Примачок',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(22,'Рощин',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(23,'Титов',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(24,'Шапоров',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(25,'Слиборский Ал',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(26,'Сосновский',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(27,'Сойко',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(28,'Тихонович',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(29,'Мисюля',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(30,'Зубович',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(31,'Чапля',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(32,'Гулькович',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(33,'Рубельский',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(34,'Дима',28);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(35,'Дуб',23);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(36,'Дракон',23);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(37,'Лысый',23);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(38,'Антон',9);
 
 /*Table structure for table `position` */
 

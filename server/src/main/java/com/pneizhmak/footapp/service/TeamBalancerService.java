@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface TeamBalancerService {
 
-    Collection<Team> makeTeams(List<Integer> playerIds, int teamsCount);
+    Collection<Team> makeTeams(List<Integer> playerIds, int teamsCount, boolean balanceWithParent, boolean createPng);
 }

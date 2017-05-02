@@ -27,8 +27,11 @@ public class TeamBalancerController {
 
     @ResponseBody
     @RequestMapping(value = "/makeTeams", produces = "application/json;charset=UTF-8")
-    public Collection<Team> makeTeams(@RequestParam List<Integer> playerIds, @RequestParam int teamsCount) {
+    public Collection<Team> makeTeams(@RequestParam List<Integer> playerIds,
+                                      @RequestParam int teamsCount,
+                                      @RequestParam boolean balanceWithParent,
+                                      @RequestParam boolean createPng) {
 
-        return teamBalancerService.makeTeams(playerIds, teamsCount);
+        return teamBalancerService.makeTeams(playerIds, teamsCount, balanceWithParent, createPng);
     }
 }

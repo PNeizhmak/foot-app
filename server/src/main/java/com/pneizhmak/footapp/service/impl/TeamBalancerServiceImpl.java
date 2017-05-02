@@ -1,7 +1,8 @@
 package com.pneizhmak.footapp.service.impl;
 
 import com.pneizhmak.footapp.balancer.AutoTeamBalancer;
-import com.pneizhmak.footapp.balancer.TeamBalancer;
+import com.pneizhmak.footapp.balancer.PlayWithParentBalancer;
+import com.pneizhmak.footapp.balancer.TeamBalancerFactory;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 import com.pneizhmak.footapp.db.repository.PlayerProfileRepository;
@@ -24,12 +25,17 @@ public class TeamBalancerServiceImpl implements TeamBalancerService {
     private PlayerProfileRepository playerProfileRepository;
 
     @Override
-    public Collection<Team> makeTeams(List<Integer> playerIds, int teamsCount) {
+    public Collection<Team> makeTeams(List<Integer> playerIds, int teamsCount, boolean balanceWithParent, boolean createPng) {
 
         List<PlayerProfile> profiles = playerProfileRepository.findProfilesByPlayerId(playerIds);
 
-        TeamBalancer teamBalancer = new TeamBalancer(new AutoTeamBalancer());
+        TeamBalancerFactory teamBalancer;
+        if (balanceWithParent) {
+            teamBalancer = new TeamBalancerFactory(new PlayWithParentBalancer());
+        } else {
+            teamBalancer = new TeamBalancerFactory(new AutoTeamBalancer());
+        }
 
-        return teamBalancer.execute(profiles, playerIds.size(), teamsCount);
+        return teamBalancer.execute(profiles, playerIds.size(), teamsCount, createPng);
     }
 }

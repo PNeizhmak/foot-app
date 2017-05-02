@@ -24,9 +24,9 @@ public class PlayerController {
 
     @ResponseBody
     @RequestMapping(value = "/save")
-    public String savePlayer(@RequestParam String name) {
+    public String savePlayer(@RequestParam String name, @RequestParam Integer relatedPlayerId) {
 
-        Player player = new Player(name);
+        Player player = new Player(name, relatedPlayerId);
         playerService.savePlayer(player);
 
         return "Player successfully saved!";
@@ -34,7 +34,7 @@ public class PlayerController {
 
     @ResponseBody
     @RequestMapping(value = "/edit")
-    public String editPlayer(@RequestParam Integer id,@RequestParam String nameToSet) {
+    public String editPlayer(@RequestParam Integer id, @RequestParam String nameToSet) {
 
         Player player = playerService.getOne(id);
         player.setName(nameToSet);

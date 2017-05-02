@@ -9,15 +9,15 @@ import java.util.List;
 /**
  * @author Pavel Neizhmak
  */
-public class TeamBalancer {
+public class TeamBalancerFactory {
 
     private TeamMaker teamMaker;
 
-    public TeamBalancer(TeamMaker teamMaker) {
+    public TeamBalancerFactory(TeamMaker teamMaker) {
         this.teamMaker = teamMaker;
     }
 
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playerCount, int teamsCount) {
-        return teamMaker.execute(playerProfiles, playerCount, teamsCount);
+    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playerCount, int teamsCount, boolean createPng) {
+        return teamMaker.execute(playerProfiles, playerCount, teamsCount, createPng);
     }
 }
