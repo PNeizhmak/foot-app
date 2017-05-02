@@ -14,9 +14,15 @@ import java.util.*;
  */
 public class TeamToPngConverter {
 
+    private static int pngWidth = 350;
+
     public static void createImage(Collection<Team> result) {
 
-        BufferedImage bufferedImage = new BufferedImage(350, 200, BufferedImage.TYPE_INT_RGB);
+        if (result.size() == 3) {
+            pngWidth = 530;
+        }
+
+        BufferedImage bufferedImage = new BufferedImage(pngWidth, 200, BufferedImage.TYPE_INT_RGB);
         Graphics g = bufferedImage.getGraphics();
 
         for (int index = 0; index < result.size(); index++) {
@@ -34,6 +40,12 @@ public class TeamToPngConverter {
                 team.getPlayers().forEach(playerProfile ->
                         drawItems(g, nameY, playerProfile.getPlayer().getName(), 180, nameY[0],
                                 playerProfile.getPosition().getName(), 270));
+            } else if (index == 2) {
+                g.drawString("Team " + String.valueOf(index + 1), 340, 20);
+                g.drawLine(340, 20, 380, 20);
+                team.getPlayers().forEach(playerProfile ->
+                        drawItems(g, nameY, playerProfile.getPlayer().getName(), 340, nameY[0],
+                                playerProfile.getPosition().getName(), 430));
             }
         }
         writeImage(bufferedImage);

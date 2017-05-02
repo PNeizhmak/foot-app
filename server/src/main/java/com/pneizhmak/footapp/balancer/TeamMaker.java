@@ -25,36 +25,6 @@ public interface TeamMaker {
         }
     }
 
-    default void proceedMakeTeam1(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
-        ++seed[0];
-        if (seed[0] > teamsCount) {
-            seed[0] = 1;
-        }
-        for (int team = 1; team <= teamsCount; team++) {
-            if (seed[0] == team) {
-                teamList[team - 1].add(playerProfile);
-                break;
-            }
-        }
-    }
-
-    default void proceedMakeTeam2(List<PlayerProfile>[] teamList, int[] seed, List<PlayerProfile> playerProfiles, int teamsCount, int playersInTeam) {
-        ++seed[0];
-        if (seed[0] > teamsCount) {
-            seed[0] = 1;
-        }
-        for (int team = 1; team <= teamsCount; team++) {
-            if (seed[0] == team) {
-                if (teamList[team - 1].size() + playerProfiles.size() > playersInTeam) {
-                    ++seed[0];
-                    continue;
-                }
-                teamList[team - 1].addAll(playerProfiles);
-                break;
-            }
-        }
-    }
-
     default void produceTeams(Collection<Team> result, List<Team> teams, List<PlayerProfile>[] teamList) {
         for (int index = 0; index < teams.size(); index++) {
 

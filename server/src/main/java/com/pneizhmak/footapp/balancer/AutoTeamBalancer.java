@@ -50,7 +50,7 @@ public class AutoTeamBalancer implements TeamMaker {
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-                    proceedMakeTeam1(teamList, seed, playerProfile, teamsCount);
+                    proceedAutoBalance(teamList, seed, playerProfile, teamsCount);
                 }
             });
         }
@@ -62,5 +62,18 @@ public class AutoTeamBalancer implements TeamMaker {
         }
 
         return result;
+    }
+
+    private void proceedAutoBalance(List<PlayerProfile>[] teamList, int[] seed, PlayerProfile playerProfile, int teamsCount) {
+        ++seed[0];
+        if (seed[0] > teamsCount) {
+            seed[0] = 1;
+        }
+        for (int team = 1; team <= teamsCount; team++) {
+            if (seed[0] == team) {
+                teamList[team - 1].add(playerProfile);
+                break;
+            }
+        }
     }
 }

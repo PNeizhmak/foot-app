@@ -79,7 +79,7 @@ public class PlayWithParentBalancer implements TeamMaker {
 
         final int[] seed = {0};
 
-        parentIdToChildProfile.values().forEach(pp -> proceedMakeTeam2(teamList, seed, pp, teamsCount, playersInTeam));
+        parentIdToChildProfile.values().forEach(pp -> proceedPlayWithParentBalance(teamList, seed, pp, teamsCount, playersInTeam));
 
         while (teamList[teamsCount - 1].size() != playersInTeam) {
             positionToProfile.forEach((position, profiles) -> {
@@ -91,7 +91,7 @@ public class PlayWithParentBalancer implements TeamMaker {
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-                    proceedMakeTeam2(teamList, seed, Collections.singletonList(playerProfile), teamsCount, playersInTeam);
+                    proceedPlayWithParentBalance(teamList, seed, Collections.singletonList(playerProfile), teamsCount, playersInTeam);
                 }
             });
         }
@@ -103,5 +103,22 @@ public class PlayWithParentBalancer implements TeamMaker {
         }
 
         return result;
+    }
+
+    private void proceedPlayWithParentBalance(List<PlayerProfile>[] teamList, int[] seed, List<PlayerProfile> playerProfiles, int teamsCount, int playersInTeam) {
+        ++seed[0];
+        if (seed[0] > teamsCount) {
+            seed[0] = 1;
+        }
+        for (int team = 1; team <= teamsCount; team++) {
+            if (seed[0] == team) {
+                if (teamList[team - 1].size() + playerProfiles.size() > playersInTeam) {
+                    ++seed[0];
+                    continue;
+                }
+                teamList[team - 1].addAll(playerProfiles);
+                break;
+            }
+        }
     }
 }
