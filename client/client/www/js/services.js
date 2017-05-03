@@ -16,7 +16,6 @@ angular.module('starter.services', [])
       }).map(function (p) {
         return p.id;
       }).join(',');
-      var teamsCount = 2;
       return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount}});
     },
     get: function(playerId) {
