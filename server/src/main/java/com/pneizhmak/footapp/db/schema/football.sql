@@ -44,7 +44,7 @@ CREATE TABLE `player_profile` (
   CONSTRAINT `FKehou6s89rv2k40apw44h5onnw` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
   CONSTRAINT `FKnbg9ajtc7cf7odugkpl9op9wv` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
   CONSTRAINT `FKobffu1jp354v25sul0btcqcpy` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 /*Data for the table `player_profile` */
 
@@ -164,6 +164,10 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (57,29,2,4);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
 (58,38,3,7);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(59,39,3,8);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
+(60,39,4,7);
 
 /*Table structure for table `players` */
 
@@ -174,7 +178,7 @@ CREATE TABLE `players` (
   `name` varchar(255) NOT NULL,
   `parent_id` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 /*Data for the table `players` */
 
@@ -254,6 +258,8 @@ insert  into `players`(`id`,`name`,`parent_id`) values
 (37,'Лысый',23);
 insert  into `players`(`id`,`name`,`parent_id`) values
 (38,'Антон',9);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(39,'Вова',9);
 
 /*Table structure for table `position` */
 
