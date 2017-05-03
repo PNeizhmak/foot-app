@@ -2,8 +2,8 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Players) {
   $scope.teams = Players.getTeamsCount();
-  $scope.saveTeamsCount = function() {
-    Players.setTeamsCount($scope.teams);
+  $scope.saveTeamsCount = function(count) {
+    Players.setTeamsCount(count);
   };
 })
 
