@@ -25,6 +25,6 @@ public class FootApplicationTests {
 
     @Test
     public void makeTeams() {
-        balancerController.makeTeams(Arrays.asList(1, 32, 14, 15, 20, 23, 33, 9, 38, 16, 18, 37, 34, 35, 36), 3, true, true);
+        balancerController.makeTeams(Arrays.asList(20, 18, 33, 10, 31, 28, 34, 9, 39, 14, 15, 11, 35, 23), 2, true, true);
     }
 }

@@ -14,6 +14,7 @@ import static java.util.Comparator.comparingInt;
 /**
  * @author Pavel Neizhmak
  */
+@SuppressWarnings("ConstantConditions")
 public class PlayWithParentBalancer implements TeamMaker {
 
     @Override
@@ -50,7 +51,6 @@ public class PlayWithParentBalancer implements TeamMaker {
                 removeSelectedProfiles(playersToDelete, profilesToDelete, profiles);
 
                 if (!profiles.isEmpty()) {
-                    @SuppressWarnings("ConstantConditions")
                     PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
@@ -101,11 +101,19 @@ public class PlayWithParentBalancer implements TeamMaker {
                         }
                     });
 
-                    @SuppressWarnings("ConstantConditions") final int minTeamWeightBucket = IntStream.range(0, bucketWeightList.size()).boxed()
+                    int minTeamWeightBucket;
+                    minTeamWeightBucket = IntStream.range(0, bucketWeightList.size()).boxed()
                             .min(comparingInt(bucketWeightList::get))
                             .get();
 
-                    @SuppressWarnings("ConstantConditions") final PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
+                    if (teamList[minTeamWeightBucket].size() == playersInTeam) {
+                        int finalMinTeamWeightBucket = minTeamWeightBucket;
+                        minTeamWeightBucket = IntStream.range(0, bucketWeightList.size()).filter(index -> index != finalMinTeamWeightBucket).boxed()
+                                .min(comparingInt(bucketWeightList::get))
+                                .get();
+                    }
+
+                    final PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
 
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
