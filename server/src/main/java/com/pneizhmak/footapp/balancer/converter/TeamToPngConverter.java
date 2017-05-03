@@ -29,20 +29,20 @@ public class TeamToPngConverter {
             Team team = new ArrayList<>(result).get(index);
             final int[] nameY = {40};
             if (index == 0) {
-                g.drawString("Team " + String.valueOf(index + 1), 20, 20);
-                g.drawLine(20, 20, 60, 20);
+                g.drawString("Team " + String.valueOf(index + 1) + " skill: " + team.getTeamWeight().toString(), 20, 20);
+                g.drawLine(20, 21, 110, 21);
                 team.getPlayers().forEach(playerProfile ->
                         drawItems(g, nameY, playerProfile.getPlayer().getName(), 20, nameY[0],
                                 playerProfile.getPosition().getName(), 110));
             } else if (index == 1) {
-                g.drawString("Team " + String.valueOf(index + 1), 180, 20);
-                g.drawLine(180, 20, 220, 20);
+                g.drawString("Team " + String.valueOf(index + 1) + " skill: " + team.getTeamWeight().toString(), 180, 20);
+                g.drawLine(180, 21, 270, 21);
                 team.getPlayers().forEach(playerProfile ->
                         drawItems(g, nameY, playerProfile.getPlayer().getName(), 180, nameY[0],
                                 playerProfile.getPosition().getName(), 270));
             } else if (index == 2) {
-                g.drawString("Team " + String.valueOf(index + 1), 340, 20);
-                g.drawLine(340, 20, 380, 20);
+                g.drawString("Team " + String.valueOf(index + 1) + " skill: " + team.getTeamWeight().toString(), 340, 20);
+                g.drawLine(340, 21, 430, 21);
                 team.getPlayers().forEach(playerProfile ->
                         drawItems(g, nameY, playerProfile.getPlayer().getName(), 340, nameY[0],
                                 playerProfile.getPosition().getName(), 430));
