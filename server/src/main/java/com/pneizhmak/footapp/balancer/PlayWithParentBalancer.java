@@ -7,6 +7,9 @@ import com.pneizhmak.footapp.db.model.Team;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static java.util.Comparator.comparingInt;
 
 /**
  * @author Pavel Neizhmak
@@ -86,12 +89,28 @@ public class PlayWithParentBalancer implements TeamMaker {
                 removeSelectedProfiles(playersToDelete, profilesToDelete, profiles);
 
                 if (!profiles.isEmpty()) {
-                    @SuppressWarnings("ConstantConditions")
-                    PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
+
+                    List<Integer> bucketWeightList = new ArrayList<>(teamsCount);
+                    final int[] bucketIndex = {0};
+                    Arrays.stream(teamList).forEach(bucket -> {
+                        if (teamList[bucketIndex[0]].size() > 0) {
+                            final int[] bucketWeight = new int[1];
+                            bucket.forEach(pp -> bucketWeight[0] += pp.getWeight());
+                            bucketWeightList.add(bucketWeight[0]);
+                            bucketIndex[0]++;
+                        }
+                    });
+
+                    @SuppressWarnings("ConstantConditions") final int minTeamWeightBucket = IntStream.range(0, bucketWeightList.size()).boxed()
+                            .min(comparingInt(bucketWeightList::get))
+                            .get();
+
+                    @SuppressWarnings("ConstantConditions") final PlayerProfile playerProfile = profiles.stream().max(Comparator.comparing(PlayerProfile::getWeight)).get();
+
                     player[0] = playerProfile.getPlayer();
                     playersToDelete.add(player[0]);
 
-                    proceedPlayWithParentBalance(teamList, seed, Collections.singletonList(playerProfile), teamsCount, playersInTeam);
+                    teamList[minTeamWeightBucket].add(playerProfile);
                 }
             });
         }
@@ -120,5 +139,13 @@ public class PlayWithParentBalancer implements TeamMaker {
                 break;
             }
         }
+    }
+
+    //keep this change
+    private double getTeamWeightAvg(List<PlayerProfile> playerProfiles, int playersInTeam) {
+        int[] teamWeightSum = {0};
+        playerProfiles.forEach(pp -> teamWeightSum[0] += pp.getWeight());
+
+        return teamWeightSum[0] / playerProfiles.size() * playersInTeam;
     }
 }
