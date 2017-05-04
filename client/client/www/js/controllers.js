@@ -2,9 +2,16 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Players) {
   $scope.teams = Players.getTeamsCount();
+  $scope.settings = {};
+  $scope.settings.balanceWithParent = false;
+
   $scope.saveTeamsCount = function(count) {
     Players.setTeamsCount(count);
   };
+
+  $scope.balanceWithParentChange = function () {
+    Players.setBalanceWithParent($scope.settings.balanceWithParent);
+  }
 })
 
 .controller('PlayersCtrl', function($scope, $ionicLoading, $state, Players) {

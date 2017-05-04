@@ -10,5 +10,9 @@
       <input type="range" name="teams" min="2" max="4" ng-model="teams" ng-change="saveTeamsCount(teams)">
       <!--<i class="icon ion-plus"></i>-->
     </div>
+
+    <ion-toggle ng-model="settings.balanceWithParent" ng-checked="settings.balanceWithParent" ng-change="balanceWithParentChange()">
+      Play with leg in one team
+    </ion-toggle>
   </ion-content>
 </ion-view>

@@ -5,6 +5,7 @@ angular.module('starter.services', [])
   var dataSource = 'http://localhost:8080';
   var selectedPlayers = [];
   var teamsCount = 2;
+  var balanceWithParent = false;
 
   return {
     all: function() {
@@ -16,7 +17,7 @@ angular.module('starter.services', [])
       }).map(function (p) {
         return p.id;
       }).join(',');
-      return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount, balanceWithParent: true, createPng: true}});
+      return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount, balanceWithParent: balanceWithParent, createPng: true}});
     },
     get: function(playerId) {
       return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
@@ -32,6 +33,12 @@ angular.module('starter.services', [])
     },
     getTeamsCount: function() {
       return teamsCount;
+    },
+    setBalanceWithParent: function(param) {
+      balanceWithParent = param;
+    },
+    getBalanceWithParent: function() {
+      return balanceWithParent;
     }
   };
 });
