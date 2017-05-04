@@ -10,9 +10,14 @@
       <input type="range" name="teams" min="2" max="4" ng-model="teams" ng-change="saveTeamsCount(teams)">
       <!--<i class="icon ion-plus"></i>-->
     </div>
-
-    <ion-toggle ng-model="settings.balanceWithParent" ng-checked="settings.balanceWithParent" ng-change="balanceWithParentChange()">
-      Play with leg in one team
-    </ion-toggle>
+    <ion-item class="item item-toggle" type="item-text-wrap">
+      <p>Play with leg in one team</p>
+      <label class="toggle toggle-balanced">
+        <input type="checkbox" ng-model="settings.balanceWithParent" ng-checked="settings.balanceWithParent" ng-change="balanceWithParentChange()">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </ion-item>
   </ion-content>
 </ion-view>
