@@ -15,11 +15,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlayersCtrl', function($scope, $ionicLoading, $state, Players) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
   $scope.selectedPlayers = 0;
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
@@ -44,6 +39,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('TeamsCtrl', function($scope, $stateParams, $ionicLoading, Players) {
+  $scope.alert = function(text) {
+    alert(text);
+  };
+
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
     Players.shuffle(Players.getSelectedPlayers()).then(function(response){
