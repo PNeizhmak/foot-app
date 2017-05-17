@@ -15,7 +15,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlayersCtrl', function($scope, $ionicLoading, $state, Players) {
-  $scope.selectedPlayers = 0;
   $scope.$on('$ionicView.enter', function(){
     $ionicLoading.show();
     Players.all().then(function(response){
@@ -24,6 +23,7 @@ angular.module('starter.controllers', [])
       //request was not successful
       //handle the error
     }).finally(function(){
+      $scope.selectedPlayers = 0;
       $ionicLoading.hide();
     });
   });
