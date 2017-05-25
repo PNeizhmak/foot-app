@@ -25,5 +25,6 @@ public class Game {
     @Getter
     @Setter
     @NonNull
+    @Column(name = "game_date")
     String gameDate;
 }

@@ -36,6 +36,7 @@ public class Team {
 
     @Getter
     @Setter
+    @Column(name = "team_weight")
     private Integer teamWeight;
 
     @Getter

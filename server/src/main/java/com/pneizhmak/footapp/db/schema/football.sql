@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `game`;
 
 CREATE TABLE `game` (
   `id` int(11) NOT NULL,
-  `gameDate` varchar(255) DEFAULT NULL,
+  `game_date` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -313,7 +313,7 @@ DROP TABLE IF EXISTS `team`;
 
 CREATE TABLE `team` (
   `id` int(11) NOT NULL,
-  `teamWeight` int(11) DEFAULT NULL,
+  `team_weight` int(11) DEFAULT NULL,
   `game_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKrak251g2iec8hmjblec8lmyia` (`game_id`),
