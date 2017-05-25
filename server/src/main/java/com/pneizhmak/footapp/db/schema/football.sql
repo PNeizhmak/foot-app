@@ -16,6 +16,18 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`football` /*!40100 DEFAULT CHARACTER SE
 
 USE `football`;
 
+/*Table structure for table `game` */
+
+DROP TABLE IF EXISTS `game`;
+
+CREATE TABLE `game` (
+  `id` int(11) NOT NULL,
+  `gameDate` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `game` */
+
 /*Table structure for table `hibernate_sequences` */
 
 DROP TABLE IF EXISTS `hibernate_sequences`;
@@ -40,9 +52,7 @@ CREATE TABLE `player_profile` (
   PRIMARY KEY (`id`),
   KEY `FK7rscyl2qlky12b5f0ts4l8aq6` (`position_id`),
   KEY `FKobffu1jp354v25sul0btcqcpy` (`player_id`),
-  CONSTRAINT `FK7rscyl2qlky12b5f0ts4l8aq6` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
   CONSTRAINT `FKehou6s89rv2k40apw44h5onnw` FOREIGN KEY (`position_id`) REFERENCES `position` (`id`),
-  CONSTRAINT `FKnbg9ajtc7cf7odugkpl9op9wv` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
   CONSTRAINT `FKobffu1jp354v25sul0btcqcpy` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
@@ -281,6 +291,36 @@ insert  into `position`(`id`,`name`) values
 (3,'midfield');
 insert  into `position`(`id`,`name`) values
 (4,'forward');
+
+/*Table structure for table `pp_in_team` */
+
+DROP TABLE IF EXISTS `pp_in_team`;
+
+CREATE TABLE `pp_in_team` (
+  `team_id` int(11) NOT NULL,
+  `pp_id` int(11) NOT NULL,
+  KEY `FKq29fhkwu363r26eu17r5l7t2e` (`pp_id`),
+  KEY `FK6rkoyp29ncumcqx5ggsome17o` (`team_id`),
+  CONSTRAINT `FK6rkoyp29ncumcqx5ggsome17o` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`),
+  CONSTRAINT `FKq29fhkwu363r26eu17r5l7t2e` FOREIGN KEY (`pp_id`) REFERENCES `player_profile` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `pp_in_team` */
+
+/*Table structure for table `team` */
+
+DROP TABLE IF EXISTS `team`;
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL,
+  `teamWeight` int(11) DEFAULT NULL,
+  `game_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKrak251g2iec8hmjblec8lmyia` (`game_id`),
+  CONSTRAINT `FKrak251g2iec8hmjblec8lmyia` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `team` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

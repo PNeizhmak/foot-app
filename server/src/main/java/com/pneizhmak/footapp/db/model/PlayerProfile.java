@@ -1,6 +1,7 @@
 package com.pneizhmak.footapp.db.model;
 
 import lombok.*;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 
@@ -10,16 +11,19 @@ import javax.persistence.*;
 @Entity
 @Getter
 @ToString
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "player_profile")
 @TableGenerator(name = "player_profile_table", allocationSize = 100)
+@Service
 public class PlayerProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "player_profile_table")
+    @Setter
     @Getter
-    Integer id;
+    private Integer id;
 
     @Getter
     @Setter
