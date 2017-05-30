@@ -1,13 +1,12 @@
 package com.pneizhmak.footapp.controller;
 
+import com.pneizhmak.footapp.controller.model.GameDetails;
 import com.pneizhmak.footapp.db.model.*;
 import com.pneizhmak.footapp.service.GameService;
 import com.pneizhmak.footapp.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -30,8 +29,11 @@ public class GameController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/save")
-    public String saveGame(@RequestParam String date, @RequestParam Collection<Team> teams) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String saveGame(@RequestBody final GameDetails gameDetails) {
+
+        final String date = gameDetails.getDate();
+        final Collection<Team> teams = gameDetails.getTeams();
 
         Game game = new Game(date);
         final Game savedGame = gameService.saveGame(game);
