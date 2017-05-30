@@ -49,6 +49,7 @@ CREATE TABLE `player_profile` (
   `player_id` int(3) NOT NULL,
   `position_id` int(3) NOT NULL,
   `weight` int(3) DEFAULT NULL,
+  `goals_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7rscyl2qlky12b5f0ts4l8aq6` (`position_id`),
   KEY `FKobffu1jp354v25sul0btcqcpy` (`player_id`),
@@ -58,126 +59,126 @@ CREATE TABLE `player_profile` (
 
 /*Data for the table `player_profile` */
 
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(1,1,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(2,1,3,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(3,1,4,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(4,2,2,3);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(5,2,3,3);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(6,3,4,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(7,4,2,4);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(8,4,4,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(9,5,4,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(10,6,3,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(11,9,4,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(12,10,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(13,10,3,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(14,11,1,9);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(15,12,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(16,12,3,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(17,13,3,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(18,13,4,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(19,14,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(20,15,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(21,15,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(22,15,4,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(23,16,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(24,17,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(25,18,2,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(26,20,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(27,20,3,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(28,23,2,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(29,23,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(30,24,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(31,24,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(32,26,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(33,28,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(34,28,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(35,30,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(36,30,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(37,30,4,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(38,31,2,3);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(39,31,3,2);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(40,31,4,3);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(41,32,3,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(42,32,4,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(43,33,2,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(44,33,4,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(45,34,1,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(46,35,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(47,35,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(48,36,2,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(49,37,4,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(50,7,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(51,8,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(52,19,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(53,21,2,6);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(54,22,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(55,25,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(56,27,2,5);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(57,29,2,4);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(58,38,3,7);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(59,39,3,8);
-insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`) values
-(60,39,4,7);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(1,1,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(2,1,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(3,1,4,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(4,2,2,3,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(5,2,3,3,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(6,3,4,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(7,4,2,4,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(8,4,4,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(9,5,4,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(10,6,3,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(11,9,4,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(12,10,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(13,10,3,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(14,11,1,9,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(15,12,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(16,12,3,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(17,13,3,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(18,13,4,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(19,14,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(20,15,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(21,15,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(22,15,4,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(23,16,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(24,17,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(25,18,2,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(26,20,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(27,20,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(28,23,2,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(29,23,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(30,24,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(31,24,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(32,26,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(33,28,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(34,28,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(35,30,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(36,30,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(37,30,4,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(38,31,2,3,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(39,31,3,2,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(40,31,4,3,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(41,32,3,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(42,32,4,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(43,33,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(44,33,4,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(45,34,1,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(46,35,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(47,35,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(48,36,2,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(49,37,4,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(50,7,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(51,8,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(52,19,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(53,21,2,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(54,22,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(55,25,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(56,27,2,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(57,29,2,4,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(58,38,3,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(59,39,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(60,39,4,7,NULL);
 
 /*Table structure for table `players` */
 

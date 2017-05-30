@@ -40,4 +40,9 @@ public class PlayerProfile {
     @Getter
     @Setter
     private Integer weight;
+
+    @Getter
+    @Setter
+    @Column(name = "goals_count")
+    private Integer goalsCount;
 }
