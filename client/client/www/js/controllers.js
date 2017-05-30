@@ -38,9 +38,52 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('TeamsCtrl', function($scope, $stateParams, $ionicLoading, Players) {
+.controller('TeamsCtrl', function($scope, $stateParams, $ionicLoading, $ionicModal, Players) {
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    focusFirstInput: true
+  }).then(function(modal) {
+    $scope.modal = modal;
+    $scope.modal.show();
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+
   $scope.alert = function(text) {
     alert(text);
+  };
+
+  $scope.save = function (datetime) {
+    $ionicLoading.show();
+    var game = {datetime: datetime, teams: this.teams}
+    Players.save(game).then(function(response){
+      // todo goto games
+    }).catch(function(response){
+      //request was not successful
+      //handle the error
+    }).finally(function(){
+      $ionicLoading.hide();
+    });
   };
 
   $scope.$on('$ionicView.enter', function(){
