@@ -74,8 +74,20 @@ public class GameController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/all", produces = "application/json;charset=UTF-8")
-    public Object[] getAll() {
+    @RequestMapping(value = "/all-teams", produces = "application/json;charset=UTF-8")
+    public Object[] getAllTeams() {
         return teamService.findAll();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/all-games", produces = "application/json;charset=UTF-8")
+    public Object[] getAllGames() {
+        return gameService.findAll();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/get-game-by-id", produces = "application/json;charset=UTF-8")
+    public Game getGameById(@RequestParam int id) {
+        return gameService.getOne(id);
     }
 }
