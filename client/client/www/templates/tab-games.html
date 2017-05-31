@@ -1,0 +1,12 @@
+<ion-view view-title="Games">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding" class="has-header">
+    <ion-list>
+      <ion-item class="item item-toggle" ng-repeat="game in games" type="item-text-wrap">
+        <h2>{{game.gameDate}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

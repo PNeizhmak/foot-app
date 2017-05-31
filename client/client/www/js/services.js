@@ -1,6 +1,6 @@
-angular.module('starter.services', [])
+var module = angular.module('starter.services', []);
 
-.factory('Players', function($http) {
+module.factory('Players', function ($http) {
 
   var dataSource = 'http://localhost:8080';
   var selectedPlayers = [];
@@ -8,16 +8,55 @@ angular.module('starter.services', [])
   var balanceWithParent = false;
 
   return {
-    all: function() {
+    all: function () {
       return $http.get(dataSource + "/players/all");
     },
-    shuffle: function(players) {
+    shuffle: function (players) {
       var ids = players.filter(function (p) {
         return p.checked;
       }).map(function (p) {
         return p.id;
       }).join(',');
-      return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount, balanceWithParent: balanceWithParent, createPng: true}});
+      return $http.get(dataSource + "/team-balancer/makeTeams", {
+        params: {
+          playerIds: ids,
+          teamsCount: teamsCount,
+          balanceWithParent: balanceWithParent,
+          createPng: true
+        }
+      });
+    },
+    get: function (playerId) {
+      return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
+    },
+    setSelectedPlayers: function (players) {
+      selectedPlayers = players;
+    },
+    getSelectedPlayers: function () {
+      return selectedPlayers;
+    },
+    setTeamsCount: function (count) {
+      teamsCount = count;
+    },
+    getTeamsCount: function () {
+      return teamsCount;
+    },
+    setBalanceWithParent: function (param) {
+      balanceWithParent = param;
+    },
+    getBalanceWithParent: function () {
+      return balanceWithParent;
+    }
+  };
+});
+
+module.factory('Game', function ($http) {
+
+  var dataSource = 'http://localhost:8080';
+
+  return {
+    all: function () {
+      return $http.get(dataSource + "/game/all-games");
     },
     save: function (game) {
       var data = {
@@ -25,27 +64,6 @@ angular.module('starter.services', [])
         teams: game.teams
       };
       return $http.post(dataSource + "/game/save", data);
-    },
-    get: function(playerId) {
-      return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
-    },
-    setSelectedPlayers: function(players) {
-      selectedPlayers = players;
-    },
-    getSelectedPlayers: function() {
-      return selectedPlayers;
-    },
-    setTeamsCount: function(count) {
-      teamsCount = count;
-    },
-    getTeamsCount: function() {
-      return teamsCount;
-    },
-    setBalanceWithParent: function(param) {
-      balanceWithParent = param;
-    },
-    getBalanceWithParent: function() {
-      return balanceWithParent;
     }
   };
 });
