@@ -20,7 +20,11 @@ angular.module('starter.services', [])
       return $http.get(dataSource + "/team-balancer/makeTeams", {params: {playerIds: ids, teamsCount: teamsCount, balanceWithParent: balanceWithParent, createPng: true}});
     },
     save: function (game) {
-      return $http.post(dataSource + "/game/save", {params: {date: game.datetime, teams: game.teams}});
+      var data = {
+        date: game.datetime,
+        teams: game.teams
+      };
+      return $http.post(dataSource + "/game/save", data);
     },
     get: function(playerId) {
       return $http.get(dataSource + "/players/get-by-id", {params: {id: playerId}});
