@@ -64,6 +64,9 @@ module.factory('Game', function ($http) {
         teams: game.teams
       };
       return $http.post(dataSource + "/game/save", data);
+    },
+    findTeamsByGameId: function (gameId) {
+      return $http.get(dataSource + "/game/find-teams-by-game-id", {params: {gameId: gameId}});
     }
   };
 });

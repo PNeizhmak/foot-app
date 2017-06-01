@@ -108,6 +108,16 @@ angular.module('starter.controllers', [])
       $ionicLoading.show();
       Game.all().then(function (response) {
         $scope.games = response.data;
+        angular.forEach($scope.games, function (value, index) {
+
+          $scope.games[index].teams = [];
+
+          Game.findTeamsByGameId(value.id).then(function (res) {
+            $scope.games[index].teams.push(res.data);
+          });
+
+          console.log();
+        })
       }).catch(function (response) {
         //request was not successful
         //handle the error
@@ -115,6 +125,14 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
       });
     });
+
+    $scope.toggleGame = function (game) {
+      game.show = !game.show;
+    };
+
+    $scope.isGameShown = function (game) {
+      return game.show;
+    };
   })
 
   .controller('PlayerDetailCtrl', function ($scope, $stateParams, $ionicLoading, Players) {
