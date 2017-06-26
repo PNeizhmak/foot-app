@@ -1,0 +1,12 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Approve game</h1>
+    <button class="button button-clear button-assertive" ng-click="closeModal()">Back</button>
+  </ion-header-bar>
+  <ion-content>
+    <input ng-model="datetime" type="datetime" placeholder="Pick date">
+    <button class="button button-positive icon ion-checkmark-round" ng-click="save(datetime)">
+      Approve and Save
+    </button>
+  </ion-content>
+</ion-modal-view>
