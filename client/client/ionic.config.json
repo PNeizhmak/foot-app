@@ -1,4 +1,5 @@
 {
   "name": "Foot-app",
-  "app_id": ""
+  "app_id": "",
+  "type": "ionic-angular"
 }
