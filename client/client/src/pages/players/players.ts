@@ -7,8 +7,10 @@ import {RestProvider} from '../../providers/rest/rest';
   templateUrl: 'players.html'
 })
 export class PlayersPage {
-  players: string[];
+  private players: any;
   errorMessage: string;
+
+  private playersSearchBar: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
@@ -21,6 +23,24 @@ export class PlayersPage {
     this.restProvider.getPlayers()
       .subscribe(
         players => this.players = players,
-        error => this.errorMessage = <any>error);
+        error => this.errorMessage = <any>error,
+        () => this.initializeItems());
+  }
+
+  initializeItems() {
+    this.playersSearchBar = this.players;
+  }
+
+  getPlayersSearchBar(ev: any) {
+
+    this.initializeItems();
+
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.playersSearchBar = this.playersSearchBar.filter((p) => {
+        return (p.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 }

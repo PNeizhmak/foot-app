@@ -21,16 +21,16 @@ export class RestProvider {
 
   getPlayers(): Observable<string[]> {
     return this.http.get(this.playersAllUrl)
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(RestProvider.extractData)
+      .catch(RestProvider.handleError);
   }
 
-  private extractData(res: Response) {
+  private static extractData(res: Response) {
     let body = res.json();
     return body || {};
   }
 
-  private handleError(error: Response | any) {
+  private static handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
