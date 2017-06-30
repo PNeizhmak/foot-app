@@ -10,12 +10,16 @@
 
 <ion-content padding>
   <h2>Settings</h2>
-  <p>Number of teams (<b>{{teams}}</b>):</p>
-  <ion-item>
-    <ion-range default="2" min="2" max="4" step="1" [(ngModel)]="teams">
-      <ion-label range-left></ion-label>
-      <ion-label range-right></ion-label>
-    </ion-range>
+  <ion-item item-end>
+    <ion-label>
+      Number of teams:
+    </ion-label>
+    <ion-select item-end [(ngModel)]="teamsCount">
+      <ion-option value="1">1</ion-option>
+      <ion-option value="2">2</ion-option>
+      <ion-option value="3">3</ion-option>
+      <ion-option value="4">4</ion-option>
+    </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Play with leg in one team</ion-label>
