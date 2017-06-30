@@ -11,6 +11,7 @@ export class PlayersPage {
   errorMessage: string;
 
   private playersSearchBar: any;
+  private selectedPlayers = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
@@ -29,6 +30,14 @@ export class PlayersPage {
 
   initializeItems() {
     this.playersSearchBar = this.players;
+
+    this.playersSearchBar.forEach((p) => {
+      this.selectedPlayers.forEach((selected) => {
+        if ((p.name) == (selected.name)) {
+          p.selected = true;
+        }
+      });
+    });
   }
 
   getPlayersSearchBar(ev: any) {
@@ -41,6 +50,17 @@ export class PlayersPage {
       this.playersSearchBar = this.playersSearchBar.filter((p) => {
         return (p.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }
+  }
+
+  toggleSelected(p) {
+    if (p.selected) {
+      this.selectedPlayers.push(p);
+      console.log(this.selectedPlayers);
+    }
+    else {
+      this.selectedPlayers.pop();
+      console.log(this.selectedPlayers);
     }
   }
 }

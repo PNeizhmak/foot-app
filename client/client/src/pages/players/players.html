@@ -10,14 +10,17 @@
 <ion-content padding>
   <ion-searchbar (ionInput)="getPlayersSearchBar($event)" placeholder="Search player..."></ion-searchbar>
   <ion-list>
+    <ion-list-header>
+      <ion-label>
+        {{selectedPlayers.length}} selected
+      </ion-label>
+      <button ion-button outline item-end (click)="buttonClick()">Make teams</button>
+    </ion-list-header>
     <ion-item *ngFor="let p of playersSearchBar">
-      <h2>{{p.name}}</h2>
-      <label class="toggle toggle-balanced">
-        <input type="checkbox" ng-model="player.checked" ng-change="updatePlayersCount()">
-        <div class="track">
-          <div class="handle"></div>
-        </div>
-      </label>
+      <ion-label>
+        <h2>{{p.name}}</h2>
+      </ion-label>
+      <ion-checkbox (ionChange)="toggleSelected(p)" [(ngModel)]="p.selected"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -4,19 +4,13 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-/*
- Generated class for the RestProvider provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular DI.
- */
 @Injectable()
 export class RestProvider {
 
   private playersAllUrl = 'http://localhost:8080/players/all';
 
   constructor(public http: Http) {
-    console.log('Hello RestProvider Provider');
+    console.log('Init RestProvider');
   }
 
   getPlayers(): Observable<string[]> {
