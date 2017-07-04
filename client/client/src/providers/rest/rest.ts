@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RestProvider {
 
-  private playersAllUrl = 'http://localhost:8080/players/all';
+  private playersAllUrl = 'http://10.61.20.56:8080/players/all';
 
   constructor(public http: Http) {
     console.log('Init RestProvider');

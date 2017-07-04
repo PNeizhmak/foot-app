@@ -12,6 +12,7 @@ export class PlayersPage {
 
   private playersSearchBar: any;
   private selectedPlayers = [];
+  private searchQuery: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
@@ -62,5 +63,7 @@ export class PlayersPage {
       this.selectedPlayers.pop();
       console.log(this.selectedPlayers);
     }
+    this.searchQuery = '';
+    this.initializeItems();
   }
 }
