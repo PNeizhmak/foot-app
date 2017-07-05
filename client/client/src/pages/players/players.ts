@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {RestProvider} from '../../providers/rest/rest';
+import {SharedService} from "../../services/shared-service";
 
 @Component({
   selector: 'page-players',
@@ -14,7 +15,7 @@ export class PlayersPage {
   private selectedPlayers = [];
   private searchQuery: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public sharedService: SharedService) {
   }
 
   ionViewDidLoad() {
@@ -65,5 +66,9 @@ export class PlayersPage {
     }
     this.searchQuery = '';
     this.initializeItems();
+  }
+
+  makeTeams() {
+    alert("Selected teams: " + this.sharedService.teamsCount + "\nPlay with parent: " + this.sharedService.balanceWithParent)
   }
 }

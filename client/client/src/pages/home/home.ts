@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {SharedService} from "../../services/shared-service";
 
 @Component({
@@ -10,7 +10,11 @@ export class HomePage {
 
   }
 
-  saveModel(count) {
-    this.sharedService.data = count;
+  saveTeamsCount(teamsCount) {
+    this.sharedService.teamsCount = teamsCount;
+  }
+
+  saveBalanceWithParent(balanceWithParent) {
+    this.sharedService.balanceWithParent = balanceWithParent;
   }
 }

@@ -14,7 +14,7 @@
     <ion-label>
       Number of teams:
     </ion-label>
-    <ion-select item-end [(ngModel)]="teamsCount" (ionChange)="saveModel(teamsCount)">
+    <ion-select item-end [(ngModel)]="teamsCount" (ionChange)="saveTeamsCount(teamsCount)">
       <ion-option value="1">1</ion-option>
       <ion-option value="2">2</ion-option>
       <ion-option value="3">3</ion-option>
@@ -23,6 +23,6 @@
   </ion-item>
   <ion-item>
     <ion-label>Play with leg in one team</ion-label>
-    <ion-toggle checked="false" [(ngModel)]="balanceWithParent"></ion-toggle>
+    <ion-toggle checked="false" [(ngModel)]="balanceWithParent" (ionChange)="saveBalanceWithParent(balanceWithParent)"></ion-toggle>
   </ion-item>
 </ion-content>
