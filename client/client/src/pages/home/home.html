@@ -14,7 +14,7 @@
     <ion-label>
       Number of teams:
     </ion-label>
-    <ion-select item-end [(ngModel)]="teamsCount">
+    <ion-select item-end [(ngModel)]="teamsCount" (ionChange)="saveModel(teamsCount)">
       <ion-option value="1">1</ion-option>
       <ion-option value="2">2</ion-option>
       <ion-option value="3">3</ion-option>
