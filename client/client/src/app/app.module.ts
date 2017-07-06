@@ -12,7 +12,7 @@ import { GamesPage } from '../pages/games/games';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
-import { SharedService } from '../services/shared-service';
+import { Model } from '../services/model';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { SharedService } from '../services/shared-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    SharedService
+    Model
   ]
 })
 export class AppModule {}

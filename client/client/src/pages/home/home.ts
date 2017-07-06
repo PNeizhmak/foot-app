@@ -1,20 +1,20 @@
 import {Component} from '@angular/core';
-import {SharedService} from "../../services/shared-service";
+import {Model} from "../../services/model";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public sharedService: SharedService) {
+  constructor(public model: Model) {
 
   }
 
   saveTeamsCount(teamsCount) {
-    this.sharedService.teamsCount = teamsCount;
+    this.model.teamsCount = teamsCount;
   }
 
   saveBalanceWithParent(balanceWithParent) {
-    this.sharedService.balanceWithParent = balanceWithParent;
+    this.model.balanceWithParent = balanceWithParent;
   }
 }
