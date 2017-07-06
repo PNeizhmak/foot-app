@@ -7,7 +7,9 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RestProvider {
 
-  private playersAllUrl = 'http://10.61.20.56:8080/players/all';
+  private serverUrl = 'http://10.61.20.56:8080';
+  private playersAllUrl = this.serverUrl + '/players/all';
+  private makeTeamsUrl = this.serverUrl + '/team-balancer/makeTeams';
 
   constructor(public http: Http) {
     console.log('Init RestProvider');
@@ -15,6 +17,12 @@ export class RestProvider {
 
   getPlayers(): Observable<string[]> {
     return this.http.get(this.playersAllUrl)
+      .map(RestProvider.extractData)
+      .catch(RestProvider.handleError);
+  }
+
+  makeTeams(): Observable<string[]> {
+    return this.http.get(this.makeTeamsUrl)
       .map(RestProvider.extractData)
       .catch(RestProvider.handleError);
   }

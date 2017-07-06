@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 
 import { PlayersPage } from '../players/players';
+import {RestProvider} from "../../providers/rest/rest";
 
 @Component({
   selector: 'page-teams',
@@ -11,8 +12,10 @@ import { PlayersPage } from '../players/players';
 export class TeamsPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
+  errorMessage: string;
+  private teams: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
@@ -24,6 +27,17 @@ export class TeamsPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+  }
+
+  ionViewDidLoad() {
+    this.makeTeams();
+  }
+
+  makeTeams() {
+    this.restProvider.makeTeams()
+      .subscribe(
+        teams => this.teams = teams,
+        error => this.errorMessage = <any>error);
   }
 
   itemTapped(event, item) {

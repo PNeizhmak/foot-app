@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {RestProvider} from '../../providers/rest/rest';
 import {Model} from "../../services/model";
+import {TeamsPage} from "../teams/teams";
 
 @Component({
   selector: 'page-players',
@@ -69,6 +70,6 @@ export class PlayersPage {
   }
 
   makeTeams() {
-    alert("Selected teams: " + this.model.teamsCount + "\nPlay with parent: " + this.model.balanceWithParent)
+    this.navCtrl.push(TeamsPage, {players: this.selectedPlayers});
   }
 }
