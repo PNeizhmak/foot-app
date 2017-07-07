@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -21,8 +21,18 @@ export class RestProvider {
       .catch(RestProvider.handleError);
   }
 
-  makeTeams(): Observable<string[]> {
-    return this.http.get(this.makeTeamsUrl)
+  makeTeams(players, teamsCount, balanceWithParent): Observable<string[]> {
+    const params: URLSearchParams = new URLSearchParams();
+    var ids = players.map(function (p) {
+      return p.id;
+    }).join(',');
+    params.set('playerIds', ids);
+    params.set('teamsCount', teamsCount);
+    params.set('balanceWithParent', balanceWithParent);
+    params.set('createPng', 'true');
+    return this.http.get(this.makeTeamsUrl, {
+      params: params
+    })
       .map(RestProvider.extractData)
       .catch(RestProvider.handleError);
   }
