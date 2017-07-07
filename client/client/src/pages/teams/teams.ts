@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import {NavController, NavParams} from 'ionic-angular';
 
-import { PlayersPage } from '../players/players';
 import {RestProvider} from "../../providers/rest/rest";
 
 @Component({
@@ -10,23 +9,14 @@ import {RestProvider} from "../../providers/rest/rest";
   templateUrl: 'teams.html'
 })
 export class TeamsPage {
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
-  errorMessage: string;
+
+  private players: any;
   private teams: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+  errorMessage: string;
 
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+    this.players = this.navParams.get('players');
   }
 
   ionViewDidLoad() {
@@ -40,9 +30,4 @@ export class TeamsPage {
         error => this.errorMessage = <any>error);
   }
 
-  itemTapped(event, item) {
-    this.navCtrl.push(PlayersPage, {
-      item: item
-    });
-  }
 }
