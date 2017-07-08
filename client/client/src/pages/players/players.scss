@@ -2,4 +2,30 @@ page-players {
   .list-header-md {
     border-top: 0 !important;
   }
+
+  .toolbar-item.item-md.item-block .item-inner {
+    border-bottom: 0 !important;
+    font-size: 1.4rem !important;
+  }
+
+  .toolbar-item.item-ios.item-block .item-inner {
+    border-bottom: 0 !important;
+    font-size: 1.4rem !important;
+  }
+
+  .toolbar-item.item.item-block.item-md {
+    background-color: transparent !important;
+  }
+
+  .searchbar-input {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+
+  .toolbar-item.item.item-block.item-ios {
+    background-color: transparent !important;
+  }
+
+  .list-ios > .item-block:first-child {
+    border-top: 0 !important;
+  }
 }

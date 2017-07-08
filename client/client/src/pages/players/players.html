@@ -5,17 +5,19 @@
     </button>
     <ion-title>Players</ion-title>
   </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getPlayersSearchBar($event)" placeholder="Search player..."></ion-searchbar>
-  <ion-list>
-    <ion-list-header>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getPlayersSearchBar($event)" placeholder="Search player..."></ion-searchbar>
+    <ion-item class="toolbar-item">
       <ion-label>
         {{selectedPlayers.length}} selected
       </ion-label>
       <button ion-button outline item-end (click)="makeTeams()">Make teams</button>
-    </ion-list-header>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
     <ion-item *ngFor="let p of playersSearchBar">
       <ion-label>
         <h2>{{p.name}}</h2>
