@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { Model } from '../services/model';
+import {ModalPage} from "../pages/modal/modal";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Model } from '../services/model';
     HomePage,
     PlayersPage,
     TeamsPage,
-    GamesPage
+    GamesPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { Model } from '../services/model';
     HomePage,
     PlayersPage,
     TeamsPage,
-    GamesPage
+    GamesPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

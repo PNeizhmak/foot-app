@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 
-import {LoadingController, NavController, NavParams} from 'ionic-angular';
+import {LoadingController, ModalController, NavController, NavParams} from 'ionic-angular';
 
 import {RestProvider} from "../../providers/rest/rest";
 import {Model} from "../../services/model";
+import { ModalPage } from '../../pages/modal/modal';
 
 @Component({
   selector: 'page-teams',
@@ -16,8 +17,13 @@ export class TeamsPage {
   errorMessage: string;
   teams: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public loadingCtrl: LoadingController, private model: Model) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public loadingCtrl: LoadingController, private model: Model, public modalCtrl: ModalController) {
     this.players = this.navParams.get('players');
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(ModalPage);
+    modal.present();
   }
 
   ionViewWillEnter() {
@@ -35,6 +41,10 @@ export class TeamsPage {
         teams => this.teams = teams,
         error => {this.errorMessage = <any>error; this.loading.dismiss();},
         () => {this.loading.dismiss();});
+  }
+
+  save() {
+    this.presentModal();
   }
 
 }
