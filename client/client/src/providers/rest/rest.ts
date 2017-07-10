@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RestProvider {
 
-  private serverUrl = 'http://10.61.20.56:8080';
+  private serverUrl = 'http://10.61.20.45:8080';
   private playersAllUrl = this.serverUrl + '/players/all';
   private makeTeamsUrl = this.serverUrl + '/team-balancer/makeTeams';
 
