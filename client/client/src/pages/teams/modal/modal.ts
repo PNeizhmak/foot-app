@@ -9,7 +9,7 @@ import {NavController, NavParams, ViewController} from 'ionic-angular';
 export class ModalPage {
 
   public event = {
-    month: '2017-07-12',
+    date: new Date().toISOString(),
     timeStarts: '20:00'
   };
 
