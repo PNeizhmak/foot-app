@@ -4,7 +4,7 @@ import {LoadingController, ModalController, NavController, NavParams} from 'ioni
 
 import {RestProvider} from "../../providers/rest/rest";
 import {Model} from "../../services/model";
-import { ModalPage } from '../../pages/modal/modal';
+import {ModalPage} from './modal/modal';
 
 @Component({
   selector: 'page-teams',
@@ -39,8 +39,13 @@ export class TeamsPage {
     this.restProvider.makeTeams(this.players, this.model.teamsCount, this.model.balanceWithParent)
       .subscribe(
         teams => this.teams = teams,
-        error => {this.errorMessage = <any>error; this.loading.dismiss();},
-        () => {this.loading.dismiss();});
+        error => {
+          this.errorMessage = <any>error;
+          this.loading.dismiss();
+        },
+        () => {
+          this.loading.dismiss();
+        });
   }
 
   save() {
