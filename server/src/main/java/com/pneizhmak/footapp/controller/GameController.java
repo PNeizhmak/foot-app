@@ -43,7 +43,7 @@ public class GameController {
             teamService.saveTeam(team);
         });
 
-        return "Game and Team successfully saved!";
+        return game.getId().toString();
     }
 
     @ResponseBody

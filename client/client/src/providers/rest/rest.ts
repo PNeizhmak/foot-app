@@ -8,11 +8,14 @@ import 'rxjs/add/operator/catch';
 export class RestProvider {
 
   private serverUrl = 'http://10.61.20.45:8080';
+
   private playersAllUrl = this.serverUrl + '/players/all';
   private makeTeamsUrl = this.serverUrl + '/team-balancer/makeTeams';
+  private gamesAllUrl = this.serverUrl + '/game/all-games';
+  private saveGameUrl = this.serverUrl + '/game/save';
+  private teamsByGameIdUrl = this.serverUrl + '/game/find-teams-by-game-id';
 
   constructor(public http: Http) {
-    console.log('Init RestProvider');
   }
 
   getPlayers(): Observable<string[]> {
@@ -23,16 +26,28 @@ export class RestProvider {
 
   makeTeams(players, teamsCount, balanceWithParent): Observable<string[]> {
     const params: URLSearchParams = new URLSearchParams();
-    var ids = players.map(function (p) {
+    let ids = players.map(function (p) {
       return p.id;
     }).join(',');
     params.set('playerIds', ids);
     params.set('teamsCount', teamsCount);
     params.set('balanceWithParent', balanceWithParent);
-    params.set('createPng', 'true');
+    params.set('createPng', 'false');
     return this.http.get(this.makeTeamsUrl, {
       params: params
     })
+      .map(RestProvider.extractData)
+      .catch(RestProvider.handleError);
+  }
+
+  saveGame(game): Observable<string[]> {
+    return this.http.post(this.saveGameUrl, game)
+      .map(RestProvider.extractData)
+      .catch(RestProvider.handleError);
+  }
+
+  getGames(): Observable<string[]> {
+    return this.http.get(this.gamesAllUrl)
       .map(RestProvider.extractData)
       .catch(RestProvider.handleError);
   }

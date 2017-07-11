@@ -10,7 +10,7 @@ import {TeamsPage} from "../teams/teams";
 })
 export class PlayersPage {
   private players: any;
-  errorMessage: string;
+  private errorMessage: string;
 
   private playersSearchBar: any;
   private selectedPlayers = [];

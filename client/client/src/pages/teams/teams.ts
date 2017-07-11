@@ -49,7 +49,8 @@ export class TeamsPage {
   }
 
   save() {
-    this.presentModal();
+    let modal = this.modalCtrl.create(ModalPage, {teams: this.teams});
+    modal.present();
   }
 
 }
