@@ -86,7 +86,7 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_cou
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (13,10,3,6,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
-(14,11,1,9,NULL);
+(14,11,1,8,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (15,12,2,6,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
@@ -191,6 +191,10 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_cou
 (65,42,3,5,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (66,42,4,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(67,43,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(68,43,4,7,NULL);
 
 /*Table structure for table `players` */
 
@@ -289,6 +293,8 @@ insert  into `players`(`id`,`name`,`parent_id`) values
 (41,'Новиков',0);
 insert  into `players`(`id`,`name`,`parent_id`) values
 (42,'Смолянков',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(43,'Юник',1);
 
 /*Table structure for table `position` */
 
