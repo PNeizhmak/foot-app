@@ -17,7 +17,7 @@ export class ModalPage {
   public teams: any;
 
   public event = {
-    date: new Date().toISOString(),
+    date: new Date().toISOString().slice(0,10),
     timeStarts: '20:00'
   };
 
@@ -27,7 +27,7 @@ export class ModalPage {
 
   saveGame() {
     this.game = {
-      date: this.event.date + this.event.timeStarts,
+      date: this.event.date.concat(" ").concat(this.event.timeStarts),
       teams: this.teams
     };
 
