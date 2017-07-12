@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Games</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let game of games">
+      <ion-item>
+        <ion-avatar item-left>
+          {{game.id}}
+        </ion-avatar>
+        <h3>Date {{game.gameDate}}</h3>
+        <p>Time {{game.gameTime}}</p>
+        <p item-right>Result {{game.gameResult}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="light">
+          <ion-icon name="eye"></ion-icon>
+          View
+        </button>
+        <button ion-button color="primary">
+          <ion-icon name="open"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Del
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

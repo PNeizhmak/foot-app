@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Teams</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-item class="toolbar-item">
+      <button ion-button outline item-end (click)="reBalance()">Re-balance</button>
+      <button ion-button outline item-end (click)="save()">Approve and save</button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item class="item" *ngFor="let team of teams" type="item-text-wrap">
+    <div class="item item-divider">
+      <h2>Team</h2>
+      <p>Weight = {{team.teamWeight}}</p>
+    </div>
+    <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let player of team.players">
+            <h4><b>{{player.player.name}}</b></h4>
+            <h5>{{player.position.name}}</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </ion-item>
+</ion-content>

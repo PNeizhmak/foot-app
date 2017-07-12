@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Players</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getPlayersSearchBar($event)" placeholder="Search player..."></ion-searchbar>
+    <ion-item class="toolbar-item">
+      <ion-label>
+        {{selectedPlayers.length}} selected
+      </ion-label>
+      <button ion-button outline item-end (click)="makeTeams()">Make teams</button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let p of playersSearchBar">
+      <ion-label>
+        <h2>{{p.name}}</h2>
+      </ion-label>
+      <ion-checkbox (ionChange)="toggleSelected(p)" [(ngModel)]="p.selected"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

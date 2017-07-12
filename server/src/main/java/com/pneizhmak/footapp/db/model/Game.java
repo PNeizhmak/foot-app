@@ -27,4 +27,15 @@ public class Game {
     @NonNull
     @Column(name = "game_date")
     String gameDate;
+
+    @Getter
+    @Setter
+    @NonNull
+    @Column(name = "game_time")
+    String gameTime;
+
+    @Getter
+    @Setter
+    @Column(name = "game_result")
+    String gameResult = "0 - 0";
 }

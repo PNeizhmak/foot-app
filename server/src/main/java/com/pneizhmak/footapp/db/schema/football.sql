@@ -23,6 +23,8 @@ DROP TABLE IF EXISTS `game`;
 CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `game_date` varchar(255) DEFAULT NULL,
+  `game_time` varchar(255) DEFAULT NULL,
+  `game_result` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -86,7 +88,7 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_cou
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (13,10,3,6,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
-(14,11,1,9,NULL);
+(14,11,1,8,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (15,12,2,6,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
@@ -179,6 +181,22 @@ insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_cou
 (59,39,3,8,NULL);
 insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
 (60,39,4,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(61,40,2,7,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(62,40,3,6,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(63,41,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(64,41,4,9,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(65,42,3,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(66,42,4,5,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(67,43,3,8,NULL);
+insert  into `player_profile`(`id`,`player_id`,`position_id`,`weight`,`goals_count`) values
+(68,43,4,7,NULL);
 
 /*Table structure for table `players` */
 
@@ -258,7 +276,7 @@ insert  into `players`(`id`,`name`,`parent_id`) values
 insert  into `players`(`id`,`name`,`parent_id`) values
 (32,'Гулькович',0);
 insert  into `players`(`id`,`name`,`parent_id`) values
-(33,'Рубельский',0);
+(33,'Рубельский И',0);
 insert  into `players`(`id`,`name`,`parent_id`) values
 (34,'Дима',28);
 insert  into `players`(`id`,`name`,`parent_id`) values
@@ -271,6 +289,14 @@ insert  into `players`(`id`,`name`,`parent_id`) values
 (38,'Антон',9);
 insert  into `players`(`id`,`name`,`parent_id`) values
 (39,'Вова',9);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(40,'Рубельский С',33);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(41,'Новиков',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(42,'Смолянков',0);
+insert  into `players`(`id`,`name`,`parent_id`) values
+(43,'Юник',1);
 
 /*Table structure for table `position` */
 

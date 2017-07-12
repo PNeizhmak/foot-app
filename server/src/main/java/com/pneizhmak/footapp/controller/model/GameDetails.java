@@ -17,5 +17,9 @@ public class GameDetails {
 
     @Getter
     @Setter
+    private String time;
+
+    @Getter
+    @Setter
     private Collection<Team> teams;
 }

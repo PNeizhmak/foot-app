@@ -1,0 +1,10 @@
+teams-modal {
+
+  ion-list:first-child {
+    margin-top: 50px;
+  }
+
+  ion-list + ion-list {
+    margin-top: 5px;
+  }
+}

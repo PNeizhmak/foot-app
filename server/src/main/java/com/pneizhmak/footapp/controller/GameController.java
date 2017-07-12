@@ -33,9 +33,10 @@ public class GameController {
     public String saveGame(@RequestBody final GameDetails gameDetails) {
 
         final String date = gameDetails.getDate();
+        final String time = gameDetails.getTime();
         final Collection<Team> teams = gameDetails.getTeams();
 
-        Game game = new Game(date);
+        Game game = new Game(date, time);
         final Game savedGame = gameService.saveGame(game);
 
         teams.forEach(team -> {
@@ -43,7 +44,7 @@ public class GameController {
             teamService.saveTeam(team);
         });
 
-        return "Game and Team successfully saved!";
+        return game.getId().toString();
     }
 
     @ResponseBody
