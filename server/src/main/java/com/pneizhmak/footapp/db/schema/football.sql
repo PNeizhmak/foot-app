@@ -23,6 +23,8 @@ DROP TABLE IF EXISTS `game`;
 CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `game_date` varchar(255) DEFAULT NULL,
+  `game_time` varchar(255) DEFAULT NULL,
+  `game_result` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
