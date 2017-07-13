@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface TeamMaker {
 
-    Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount, boolean createPng);
+    Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount);
 
     default void removeSelectedProfiles(List<Player> playersToDelete, List<PlayerProfile> profilesToDelete, List<PlayerProfile> profiles) {
         if (!playersToDelete.isEmpty()) {

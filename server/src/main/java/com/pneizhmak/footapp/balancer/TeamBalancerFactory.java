@@ -17,7 +17,7 @@ public class TeamBalancerFactory {
         this.teamMaker = teamMaker;
     }
 
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playerCount, int teamsCount, boolean createPng) {
-        return teamMaker.execute(playerProfiles, playerCount, teamsCount, createPng);
+    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playerCount, int teamsCount) {
+        return teamMaker.execute(playerProfiles, playerCount, teamsCount);
     }
 }

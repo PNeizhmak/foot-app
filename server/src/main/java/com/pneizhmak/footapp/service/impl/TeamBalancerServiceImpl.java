@@ -3,6 +3,7 @@ package com.pneizhmak.footapp.service.impl;
 import com.pneizhmak.footapp.balancer.AutoTeamBalancer;
 import com.pneizhmak.footapp.balancer.PlayWithParentBalancer;
 import com.pneizhmak.footapp.balancer.TeamBalancerFactory;
+import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 import com.pneizhmak.footapp.db.repository.PlayerProfileRepository;
@@ -36,6 +37,12 @@ public class TeamBalancerServiceImpl implements TeamBalancerService {
             teamBalancer = new TeamBalancerFactory(new AutoTeamBalancer());
         }
 
-        return teamBalancer.execute(profiles, playerIds.size(), teamsCount, createPng);
+        Collection<Team> result = teamBalancer.execute(profiles, playerIds.size(), teamsCount);
+
+        if (createPng) {
+            TeamToPngConverter.createImage(result);
+        }
+
+        return result;
     }
 }
