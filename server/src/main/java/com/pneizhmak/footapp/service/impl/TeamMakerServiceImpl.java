@@ -1,26 +1,23 @@
 package com.pneizhmak.footapp.service.impl;
 
-import com.pneizhmak.footapp.balancer.AutoTeamBalancer;
-import com.pneizhmak.footapp.balancer.PlayWithParentBalancer;
-import com.pneizhmak.footapp.balancer.TeamBalancerFactory;
+import java.util.Collection;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import com.pneizhmak.footapp.balancer.TeamMaker;
+import com.pneizhmak.footapp.balancer.TeamMakerFactory;
 import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 import com.pneizhmak.footapp.db.repository.PlayerProfileRepository;
-import com.pneizhmak.footapp.service.TeamBalancerService;
+import com.pneizhmak.footapp.service.TeamMakerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.List;
-
-/**
- * @author Pavel Neizhmak
- */
 @Service
 @Transactional
-public class TeamBalancerServiceImpl implements TeamBalancerService {
+public class TeamMakerServiceImpl implements TeamMakerService {
 
     @Resource
     private PlayerProfileRepository playerProfileRepository;
@@ -30,14 +27,9 @@ public class TeamBalancerServiceImpl implements TeamBalancerService {
 
         List<PlayerProfile> profiles = playerProfileRepository.findProfilesByPlayerId(playerIds);
 
-        TeamBalancerFactory teamBalancer;
-        if (balanceWithParent) {
-            teamBalancer = new TeamBalancerFactory(new PlayWithParentBalancer());
-        } else {
-            teamBalancer = new TeamBalancerFactory(new AutoTeamBalancer());
-        }
+        TeamMaker teamMaker = TeamMakerFactory.getTeamMaker(balanceWithParent);
 
-        Collection<Team> result = teamBalancer.execute(profiles, playerIds.size(), teamsCount);
+        Collection<Team> result = teamMaker.makeTeams(profiles, playerIds.size(), teamsCount);
 
         if (createPng) {
             TeamToPngConverter.createImage(result);

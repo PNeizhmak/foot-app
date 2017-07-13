@@ -17,14 +17,11 @@ import com.pneizhmak.footapp.db.model.Team;
 
 import static java.util.Comparator.comparingInt;
 
-/**
- * @author Pavel Neizhmak
- */
 @SuppressWarnings("ConstantConditions")
-public class PlayWithParentBalancer implements TeamMaker {
+public class PlayWithParentMaker implements TeamMaker {
 
     @Override
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
+    public Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
 
         Collection<Team> result = new ArrayList<>();
 

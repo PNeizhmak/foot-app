@@ -11,13 +11,10 @@ import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
-/**
- * @author Pavel Neizhmak
- */
-public class AutoTeamBalancer implements TeamMaker {
+public class AutoTeamMaker implements TeamMaker {
 
     @Override
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
+    public Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
 
         Collection<Team> result = new ArrayList<>();
 

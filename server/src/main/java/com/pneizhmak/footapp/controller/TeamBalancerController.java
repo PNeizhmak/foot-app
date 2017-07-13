@@ -1,7 +1,7 @@
 package com.pneizhmak.footapp.controller;
 
 import com.pneizhmak.footapp.db.model.Team;
-import com.pneizhmak.footapp.service.TeamBalancerService;
+import com.pneizhmak.footapp.service.TeamMakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +18,11 @@ import java.util.List;
 @RequestMapping("/team-balancer")
 public class TeamBalancerController {
 
-    private final TeamBalancerService teamBalancerService;
+    private final TeamMakerService teamMakerService;
 
     @Autowired
-    public TeamBalancerController(TeamBalancerService teamBalancerService) {
-        this.teamBalancerService = teamBalancerService;
+    public TeamBalancerController(TeamMakerService teamMakerService) {
+        this.teamMakerService = teamMakerService;
     }
 
     @ResponseBody
@@ -32,6 +32,6 @@ public class TeamBalancerController {
                                       @RequestParam boolean balanceWithParent,
                                       @RequestParam boolean createPng) {
 
-        return teamBalancerService.makeTeams(playerIds, teamsCount, balanceWithParent, createPng);
+        return teamMakerService.makeTeams(playerIds, teamsCount, balanceWithParent, createPng);
     }
 }

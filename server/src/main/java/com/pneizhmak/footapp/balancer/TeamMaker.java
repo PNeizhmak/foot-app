@@ -7,12 +7,9 @@ import com.pneizhmak.footapp.db.model.Team;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author Pavel Neizhmak
- */
 public interface TeamMaker {
 
-    Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount);
+    Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount);
 
     default void removeSelectedProfiles(List<Player> playersToDelete, List<PlayerProfile> profilesToDelete, List<PlayerProfile> profiles) {
         if (!playersToDelete.isEmpty()) {
