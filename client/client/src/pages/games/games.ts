@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 
-import {ItemSliding, NavController, NavParams, ToastController} from 'ionic-angular';
+import {ModalController, NavController, NavParams, ToastController} from 'ionic-angular';
 
 import {RestProvider} from '../../providers/rest/rest';
+import {GameModalPage} from "./modal/game-modal";
 
 @Component({
   selector: 'page-games',
@@ -13,7 +14,7 @@ export class GamesPage {
   private games: any;
   private errorMessage: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public toastCtrl: ToastController, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -38,6 +39,8 @@ export class GamesPage {
     toast.present();
   }
 
-  viewGameDetails() {
+  viewGameDetails(game) {
+    let modal = this.modalCtrl.create(GameModalPage, {gameId: game.id});
+    modal.present();
   }
 }

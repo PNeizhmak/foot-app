@@ -52,6 +52,16 @@ export class RestProvider {
       .catch(RestProvider.handleError);
   }
 
+  getTeamsByGameId(gameId): Observable<string[]> {
+    const params: URLSearchParams = new URLSearchParams();
+    params.set('gameId', gameId);
+    return this.http.get(this.teamsByGameIdUrl, {
+      params: params
+    })
+      .map(RestProvider.extractData)
+      .catch(RestProvider.handleError);
+  }
+
   private static extractData(res: Response) {
     let body = res.json();
     return body || {};

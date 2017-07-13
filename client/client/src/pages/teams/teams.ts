@@ -4,7 +4,7 @@ import {LoadingController, ModalController, NavController, NavParams} from 'ioni
 
 import {RestProvider} from "../../providers/rest/rest";
 import {Model} from "../../services/model";
-import {ModalPage} from './modal/modal';
+import {TeamsModalPage} from './modal/teams-modal';
 
 @Component({
   selector: 'page-teams',
@@ -22,7 +22,7 @@ export class TeamsPage {
   }
 
   presentModal() {
-    let modal = this.modalCtrl.create(ModalPage);
+    let modal = this.modalCtrl.create(TeamsModalPage);
     modal.present();
   }
 
@@ -49,7 +49,7 @@ export class TeamsPage {
   }
 
   save() {
-    let modal = this.modalCtrl.create(ModalPage, {teams: this.teams});
+    let modal = this.modalCtrl.create(TeamsModalPage, {teams: this.teams});
     modal.present();
   }
 

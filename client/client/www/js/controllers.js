@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
 
   .controller('TeamsCtrl', function ($scope, $stateParams, $ionicLoading, $ionicModal, $state, $ionicHistory, Players, Game) {
 
-    $ionicModal.fromTemplateUrl('templates/modal.html', {
+    $ionicModal.fromTemplateUrl('templates/teams-modal.html', {
       scope: $scope,
       animation: 'slide-in-up',
       focusFirstInput: true

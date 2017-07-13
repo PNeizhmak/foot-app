@@ -19,7 +19,7 @@
         <p item-right>Result {{game.gameResult}}</p>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="light">
+        <button ion-button color="light" (click)="viewGameDetails(game)">
           <ion-icon name="eye"></ion-icon>
           View
         </button>

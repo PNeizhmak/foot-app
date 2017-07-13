@@ -7,9 +7,9 @@ import {GamesPage} from "../../games/games";
 
 @Component({
   selector: 'teams-modal',
-  templateUrl: 'modal.html'
+  templateUrl: 'teams-modal.html'
 })
-export class ModalPage {
+export class TeamsModalPage {
 
   private errorMessage: string;
 

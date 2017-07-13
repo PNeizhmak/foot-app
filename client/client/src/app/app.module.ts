@@ -13,7 +13,8 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {RestProvider} from '../providers/rest/rest';
 import {Model} from '../services/model';
-import {ModalPage} from "../pages/teams/modal/modal";
+import {TeamsModalPage} from "../pages/teams/modal/teams-modal";
+import {GameModalPage} from "../pages/games/modal/game-modal";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ModalPage} from "../pages/teams/modal/modal";
     PlayersPage,
     TeamsPage,
     GamesPage,
-    ModalPage
+    TeamsModalPage,
+    GameModalPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import {ModalPage} from "../pages/teams/modal/modal";
     PlayersPage,
     TeamsPage,
     GamesPage,
-    ModalPage
+    TeamsModalPage,
+    GameModalPage
   ],
   providers: [
     StatusBar,
