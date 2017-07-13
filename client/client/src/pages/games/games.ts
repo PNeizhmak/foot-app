@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {NavController, NavParams} from 'ionic-angular';
+import {ItemSliding, NavController, NavParams, ToastController} from 'ionic-angular';
 
 import {RestProvider} from '../../providers/rest/rest';
 
@@ -13,10 +13,11 @@ export class GamesPage {
   private games: any;
   private errorMessage: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
+    this.presentToast('top');
     this.getGames();
   }
 
@@ -26,5 +27,17 @@ export class GamesPage {
         games => this.games = games,
         error => this.errorMessage = <any>error
       );
+  }
+
+  presentToast(position: string) {
+    let toast = this.toastCtrl.create({
+      message: 'Slide game item for options <<<',
+      duration: 3000,
+      position: position
+    });
+    toast.present();
+  }
+
+  viewGameDetails() {
   }
 }
