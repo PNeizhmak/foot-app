@@ -17,7 +17,7 @@ public class GreedyTeamMakerStrategy extends AbstractTeamMakerStrategy<GreedyTea
     protected void defineTeamForPick() {
         getModel().setCurrentTeam(getModel().getTeams().get(getModel().getCurrentTeamIndex()));
         //condition means new round
-        if (getModel().getPlayersPicked() > 0 && getModel().getPlayersPicked() % getModel().getTeamsCount() == 0) {
+        if ((getModel().getPlayersPicked() + 1) % getModel().getTeamsCount() == 0) {
             getModel().setStartingTeamIndexThisRound((getModel().getStartingTeamIndexThisRound() + 1) % getModel().getTeamsCount());
             getModel().setCurrentTeamIndex(getModel().getStartingTeamIndexThisRound());
         } else {
