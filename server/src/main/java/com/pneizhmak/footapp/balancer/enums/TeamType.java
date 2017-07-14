@@ -1,4 +1,4 @@
-package com.pneizhmak.footapp.balancer.model;
+package com.pneizhmak.footapp.balancer.enums;
 
 /**
  * @author Pavel Neizhmak

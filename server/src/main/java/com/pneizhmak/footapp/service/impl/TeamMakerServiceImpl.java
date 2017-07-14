@@ -6,8 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.pneizhmak.footapp.balancer.TeamMaker;
-import com.pneizhmak.footapp.balancer.TeamMakerFactory;
+import com.pneizhmak.footapp.balancer.factory.TeamMakerFactory;
 import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
+import com.pneizhmak.footapp.checker.TeamMakerParamsChecker;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 import com.pneizhmak.footapp.db.repository.PlayerProfileRepository;
@@ -27,8 +28,11 @@ public class TeamMakerServiceImpl implements TeamMakerService {
 
         List<PlayerProfile> profiles = playerProfileRepository.findProfilesByPlayerId(playerIds);
 
-        TeamMaker teamMaker = TeamMakerFactory.getTeamMaker(balanceWithParent);
+        if (!TeamMakerParamsChecker.checkParams(profiles, playerIds.size(), teamsCount)) {
+            return null;
+        }
 
+        TeamMaker teamMaker = TeamMakerFactory.getTeamMaker(balanceWithParent);
         Collection<Team> result = teamMaker.makeTeams(profiles, playerIds.size(), teamsCount);
 
         if (createPng) {

@@ -1,4 +1,4 @@
-package com.pneizhmak.footapp.balancer;
+package com.pneizhmak.footapp.balancer.old;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,7 +11,7 @@ import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
-public class AutoTeamMaker implements TeamMaker {
+public class AutoTeamMaker implements OldTeamMakerInterface {
 
     @Override
     public Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {

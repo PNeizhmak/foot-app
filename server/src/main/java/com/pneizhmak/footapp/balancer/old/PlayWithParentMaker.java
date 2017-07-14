@@ -1,4 +1,4 @@
-package com.pneizhmak.footapp.balancer;
+package com.pneizhmak.footapp.balancer.old;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import com.pneizhmak.footapp.db.model.Team;
 import static java.util.Comparator.comparingInt;
 
 @SuppressWarnings("ConstantConditions")
-public class PlayWithParentMaker implements TeamMaker {
+public class PlayWithParentMaker implements OldTeamMakerInterface {
 
     @Override
     public Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
