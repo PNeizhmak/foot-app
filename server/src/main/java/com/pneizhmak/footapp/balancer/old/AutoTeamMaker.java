@@ -1,21 +1,20 @@
-package com.pneizhmak.footapp.balancer;
+package com.pneizhmak.footapp.balancer.old;
 
-import com.pneizhmak.footapp.balancer.converter.TeamToPngConverter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.pneizhmak.footapp.db.model.Player;
 import com.pneizhmak.footapp.db.model.PlayerProfile;
 import com.pneizhmak.footapp.db.model.Team;
 
-import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
-
-/**
- * @author Pavel Neizhmak
- */
-public class AutoTeamBalancer implements TeamMaker {
+public class AutoTeamMaker implements OldTeamMakerInterface {
 
     @Override
-    public Collection<Team> execute(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount, boolean createPng) {
+    public Collection<Team> makeTeams(List<PlayerProfile> playerProfiles, int playersCount, int teamsCount) {
 
         Collection<Team> result = new ArrayList<>();
 
@@ -56,10 +55,6 @@ public class AutoTeamBalancer implements TeamMaker {
         }
 
         produceTeams(result, teams, teamList);
-
-        if (createPng) {
-            TeamToPngConverter.createImage(result);
-        }
 
         return result;
     }

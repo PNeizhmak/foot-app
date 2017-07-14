@@ -5,10 +5,7 @@ import com.pneizhmak.footapp.db.model.Team;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author Pavel Neizhmak
- */
-public interface TeamBalancerService {
+public interface TeamMakerService {
 
     Collection<Team> makeTeams(List<Integer> playerIds, int teamsCount, boolean balanceWithParent, boolean createPng);
 }
